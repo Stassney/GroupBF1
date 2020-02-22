@@ -47,56 +47,56 @@ These questions will leads the Group BF1 to find data that shows which continent
 ### Global
 
 - **Where did you download the data (e.g., a web URL)?**
- - _https://www.unaids.org/sites/default/files/media_asset/UNAIDS_FactSheet_en.pdf_
+  - _https://www.unaids.org/sites/default/files/media_asset/UNAIDS_FactSheet_en.pdf_
 
 - **How was the data collected or generated? Make sure to explain who collected the data (not necessarily the same people that host the data), and who or what the data is about?**
- - This data was generated through Spectrum, which is an UNAIDS supported software. As mentioned on their page, demographers, epidemiologists and evaluation specialists stationed around the world, collect these findings and report them to UNAIDS. The presented data indicates the global percentages of people diagnosed with HIV. The report also categorizes this data by age, gender, and region.
+  - This data was generated through Spectrum, which is an UNAIDS supported software. As mentioned on their page, demographers, epidemiologists and evaluation specialists stationed around the world, collect these findings and report them to UNAIDS. The presented data indicates the global percentages of people diagnosed with HIV. The report also categorizes this data by age, gender, and region.
 
 - **How many observations (rows) are in your data?**
-  - In the _Global HIV Data_ report  has  **7 rows.**
+   - In the _Global HIV Data_ report  has  **7 rows.**
 
 - **How many features (columns) are in the data?**
   - The _Global HIV Data_ reports has **9 columns.**
 
 - **What questions (from above) can be answered using the data in this dataset?**
- - **Q:** What kind of disparities do we see when it comes to receiving treatment?
- - **Q:** Which specific populations are affected globally?
- - **Q:** Which racial and gender groups are most affected by HIV?
-  - **Q:** What is the GDP level of the countries with higher rates of HIV?
+   - **Q:** What kind of disparities do we see when it comes to receiving treatment?
+   - **Q:** Which specific populations are affected globally?
+   - **Q:** Which racial and gender groups are most affected by HIV?
+   - **Q:** What is the GDP level of the countries with higher rates of HIV?
 
 ### Continent: Africa
 - **Where did you download the data (e.g., a web URL)?**
- - _https://www.unaids.org/sites/default/files/media_asset/turning-point-for-africa_en.pdf_
+  - _https://www.unaids.org/sites/default/files/media_asset/turning-point-for-africa_en.pdf_
 
 - **How was the data collected or generated? Make sure to explain who collected the data (not necessarily the same people that host the data), and who or what the data is about?**
- - UNAIDS, USA Government (particularly through the United States President’s Emergency Plan for AIDS Relief, PEPFAR) and the Global Fund are converging efforts to achieve the Fast-Track targets. Data released recently by PEPFAR show that a rapid scale-up of prevention and treatment in the places and among people most in need has enabled three African nations hard-hit by HIV— Malawi, Zambia, and Zimbabwe—to begin controlling their epidemics in adult populations.
+  - UNAIDS, USA Government (particularly through the United States President’s Emergency Plan for AIDS Relief, PEPFAR) and the Global Fund are converging efforts to achieve the Fast-Track targets. Data released recently by PEPFAR show that a rapid scale-up of prevention and treatment in the places and among people most in need has enabled three African nations hard-hit by HIV— Malawi, Zambia, and Zimbabwe—to begin controlling their epidemics in adult populations.
 
 - **How many observations (rows) are in your data?**
- - The _Turning Point for Africa_ report has **3 Rows.**
+  - The _Turning Point for Africa_ report has **3 Rows.**
 
 - **How many features (columns) are in the data?**
- - The _Turning Point for Africa_ report has **6 Columns.**
+  - The _Turning Point for Africa_ report has **6 Columns.**
 
 - **What questions (from above) can be answered using the data in this dataset?**
- - **Q:** What kind of disparities do we see when it comes to receiving treatment?
- - **Q:** Which specific populations are affected globally?
- - **Q:** Which racial and gender groups are most affected by HIV?
- - **Q:** What is the GDP level of the countries with higher rates of HIV?
+  - **Q:** What kind of disparities do we see when it comes to receiving treatment?
+  - **Q:** Which specific populations are affected globally?
+  - **Q:** Which racial and gender groups are most affected by HIV?
+  - **Q:** What is the GDP level of the countries with higher rates of HIV?
 
 ### Continent: Europe
 - **Where did you download the data (e.g., a web URL)?**
- - _https://www.ecdc.europa.eu/sites/default/files/documents/hiv-surveillance-report-2019.pdf_
+  - _https://www.ecdc.europa.eu/sites/default/files/documents/hiv-surveillance-report-2019.pdf_
 
 - **How was the data collected or generated? Make sure to explain who collected the data (not necessarily the same people that host the data), and who or what the data is about?**
- - It was published jointly by the European Centre for Disease Prevention and Control (ECDC) and the WHO Regional Office for Europe. The data shows us how new HIV diagnoses (rates per 100000 population), by country and year of diagnosis (2009–2018) and cumulative totals, in EU/EEA and other countries of the WHO European Region.
+  - It was published jointly by the European Centre for Disease Prevention and Control (ECDC) and the WHO Regional Office for Europe. The data shows us how new HIV diagnoses (rates per 100000 population), by country and year of diagnosis (2009–2018) and cumulative totals, in EU/EEA and other countries of the WHO European Region.
 
 - **How many observations (rows) are in your data?**
- - The data comprises **62 Observations.**
+  - The data comprises **62 Observations.**
 
 - **How many features (columns) are in the data?**
- - The data has **13 Columns.**
+  - The data has **13 Columns.**
 
 - **What questions (from above) can be answered using the data in this dataset?**
- - **Q:** Which specific populations are affected globally?
- - **Q:** Has the rate of HIV diagnosis’  changed within the past decade? How so?
- - **Q:** What is the GDP level of the countries with higher rates of HIV?  
+  - **Q:** Which specific populations are affected globally?
+  - **Q:** Has the rate of HIV diagnosis’  changed within the past decade? How so?
+  - **Q:** What is the GDP level of the countries with higher rates of HIV?  
