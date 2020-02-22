@@ -19,12 +19,16 @@ Today, there are 37.9 M people around the world that are living with HIV and 3.2
 - Data and statistics. (2019, July 30). Retrieved from _[Data and Statistics](https://www.who.int/hiv/data/en/)_
 
 - Turning Point for Africa. (2018). Retrieved from _[Turning Point for Africa.](https://www.unaids.org/sites/default/files/media_asset/turning-point-for-africa_en.pdf)_
+   - The report offers statistical prediction models on how to end the epidemic of HIV in Africa. It also provides tons of infographics about how much funding the continent of Africa is currently receiving in comparison to other continents in the world.
 
-- Global HIV & AIDS statistics - 2019 fact sheet. Retrieved from
+
+- Global HIV & AIDS statistics - 2019 fact sheet. Retrieved from _[Global HIV & AIDS](https://www.unaids.org/sites/default/files/media_asset/UNAIDS_FactSheet_en.pdf)_
 
 - Statistics Overview. (2019, November 21). Retrieved from _[Stat Overview](https://www.cdc.gov/hiv/statistics/overview/index.html)_
 
 - HIV Statistics - Global and Regional Trends. Retrieved   from _[HIV Statistics - Global and Regional Trends.](https://data.unicef.org/topic/hivaids/global-regional-trends/)_
+   - This report is about global and local trends of HIV. It provides data about what age group has the highest or lowest HIV count and where in the world HIV is most common in the world.
+
 
 - Prevalence of HIV, total (% of population ages 15-49). Retrieved from _[Prevalence of HIV, total (% of population ages 15-49). (n.d.).](https://data.worldbank.org/indicator/SH.DYN.AIDS.ZS)_
 
