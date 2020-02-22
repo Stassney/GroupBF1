@@ -15,23 +15,31 @@ Today, there are 37.9 M people around the world that are living with HIV and 3.2
 - Turning Point for Africa. (2018). Retrieved from _[Turning Point for Africa.](https://www.unaids.org/sites/default/files/media_asset/turning-point-for-africa_en.pdf)_
    - The report offers statistical prediction models on how to end the epidemic of HIV in Africa. It also provides tons of infographics about how much funding the continent of Africa is currently receiving in comparison to other continents in the world.
 
+
 - HIV Statistics - Global and Regional Trends. Retrieved   from _[HIV Statistics - Global and Regional Trends.](https://data.unicef.org/topic/hivaids/global-regional-trends/)_
    - This report is about global and local trends of HIV. It provides data about what age group has the highest or lowest HIV count and where in the world HIV is most common in the world.
 
 - Prevalence of HIV, total (% of population ages 15-49). Retrieved from _[Prevalence of HIV](https://data.worldbank.org/indicator/SH.DYN.AIDS.ZS)_
    - The report provides data about the Prevalence of HIV in population ages 15-49 years old. Also provides raw data about the mortality rate of different age groups that contracted  HIV.
 
-**Additional Links:**
-
 - Global HIV & AIDS statistics - 2019 fact sheet. Retrieved from _[Global HIV & AIDS](https://www.unaids.org/sites/default/files/media_asset/UNAIDS_FactSheet_en.pdf)_
+   - This report provides global data on HIV. It also includes data on mortality rates, treatment plans, and national investments for prevention care.
+
 
 - Statistics Overview. (2019, November 21). Retrieved from _[Stat Overview](https://www.cdc.gov/hiv/statistics/overview/index.html)_
+   - This report provides an in-depth analysis and statistics on HIV in the United States. It also provides data based on demographics.
+
 
 - HIV/AIDS surveillance in Europe. (2019, November 28). Retrieved from _[HIV/AIDS surveillance in Europe.](https://www.ecdc.europa.eu/sites/default/files/documents/hiv-surveillance-report-2019.pdf)_
+   - This report provides information on HIV diagnosis in Europe. The report presents  statistical analysis through graphs, charts, and datasets. The data is explored both regionally and nationally.
+
 
 - Statistics: Worldwide. Retrieved from _[Statistics: Worldwide.](http://www.amfar.org/worldwide-aids-stats/)_
+   - This report provides an overview of HIV prevalence as recent as of 2018. The report presents key statistics and data on HIV in relation to gender, region, and age.
+
 
 - Data and statistics. (2019, July 30). Retrieved from _[Data and Statistics](https://www.who.int/hiv/data/en/)_
+   - This report focuses on HIV in  low and middle income countries. It also provides information on policies taken up by these countries to tackle the epidemic. The report also displays data on  progress in HIV prevention. 
 
 **3. What data-driven questions do you hope to answer about this domain?**
 
