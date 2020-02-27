@@ -20,16 +20,37 @@
 ### Data Source:
 
 #### UNAIDS 2019 HIV estimates
-"https://www. link"
+
+"http://apps.who.int/gho/data/node.home"
 
 #### UNAIDS 2019 HIV estimates treatments
-"https://www. link"
+
+"http://apps.who.int/gho/data/node.home"
+
+
+#### Loading and viewing "by_area_hiv_est_from_1990-present.csv" file
+
+hiv_df <- read.csv(
+  file = "by_area_hiv_est_from_1990-present.csv", stringsAsFactors = FALSE)
+
+View(hiv_df)
+
+#### Loading and viewing "by_area_hiv_est_from_1990-present.csv" file
+
+hiv_treatment_df <- read.csv(
+  file = "by_area_hiv_treatment_est_from_1990-present.csv", stringsAsFactors = FALSE)
+
+View(hiv_treatment_df)
 
 
 ## Summary Information (**15 points**) (Maxine)
+
 Computes (and includes) 5 pieces of _relevant_ information using a function saved in a `script/` file. For each piece of information, make sure to:
-  - Compute the information accurately in the script (**1 point**)
+
+- Compute the information accurately in the script (**1 point**)
+
 - Include the piece of information using in-line R code in the paragraph (**1 point**)
+
 - Make clear the relevance of including the information (if not apparent) (**1 point**)
 
 
