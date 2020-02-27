@@ -1,14 +1,29 @@
-## BF1  Midpoint Deliverable 
-
-# Midpoint Deliverable Rubric
-
-This rubric is intended to help guide expectations and increase transparency. However, it is not necessarily fully exhaustive. Make sure to read the detailed explanation on Canvas, and follow the best practices described in the course book and in class.
+# BF1 Midpoint Deliverable
 
 
-## Introductory paragraph (**3 points**) (Stassney)
-Includes an introductory paragraph describing:
-  - The purpose/importance of the project (**2 points**)
-- The source of the data of the project (**1 point**)
+## Introductory paragraph (Stassney)
+
+### Introduction:
+
+#### There are about 37.9 M people (ppl) globally affected by HIV today. 
+#### Every day there are more than 5,700 ppl who contracted HIV which is nearly 240 ppl/hour.
+#### The purpose of this project is to:
+#### - learn and show where in the world HIV is most common and
+#### - to understand how the distribution of HIV treatment (HAART therapy) affects 
+####   the prevalence of HIV in certain parts of the world.
+####     - Questions such as:
+####       - Where in the world is HAART therapy most accessible?
+####       - Who is receiving HAART therapy?
+####       - What demographics around the world are benefiting from HAART therapy?
+####       - How accessibility to HAART therapy affects the prevalence of HIV in certain parts of the world?
+  
+### Data Source:
+
+#### UNAIDS 2019 HIV estimates
+"https://www. link"
+
+#### UNAIDS 2019 HIV estimates treatments
+"https://www. link"
 
 
 ## Summary Information (**15 points**) (Maxine)
