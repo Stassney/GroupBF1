@@ -56,11 +56,18 @@ Computes (and includes) 5 pieces of _relevant_ information using a function save
 
 ## Summary Table (**10 points**) (Stassney)
 - Introduces the table, explaining why the particular grouping calculation was performed (**2 points**)
+
 - Creates a summarized data frame to include as the table using `group_by()` (**2 points**)
+
 - Intentionally sorts the table in a relevant way (**1 point**)
+
 - Only displays relevant columns in the table (**1 point**)
+
 - Displays well formatted column names (**1 point**)
-- Successfully renders the table in the report using an appropriate package (e.g., don't just print out the data frame) (**1 point**)
+
+- Successfully renders the table in the report using an appropriate package 
+# (e.g., don't just print out the data frame) (**1 point**)
+
 - Interprets information the table, honing in on important information (**2 points**)
 
 
