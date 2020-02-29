@@ -30,23 +30,17 @@
 
 #### Loading and viewing "by_area_hiv_est_from_1990-present.csv" file
 
-
-
-#### Loading and viewing "by_area_hiv_est_from_1990-present.csv" file
-
-hiv_treatment_df <- read.csv(
-  file = "by_area_hiv_treatment_est_from_1990-present.csv", stringsAsFactors = FALSE)
-
-View(hiv_treatment_df)
-
-getwd()
-
 data1<-read.csv("by_area_hiv_est_from_1990-present.csv", stringsAsFactors = FALSE)
 data1<-data1[-(1:4),]
 data1<-data1[,-2]
 colnames(data1)<-data1[1,]
 colnames(data1)[1:2]<-c("Year","Location")
 data1<-data1[-1,]
+
+View(data1)
+
+#### Loading and viewing "by_area_hiv_treatment_est_from_1990-present.csv" file
+
 data2<-read.csv("by_area_hiv_treatment_est_from_1990-present.csv", stringsAsFactors = FALSE)
 data2<-data2[-(1:4),]
 data2<-data2[,-2]
@@ -58,7 +52,13 @@ dim(data2)
 intersect(colnames(data1),colnames(data2))
 data<-merge(data1,data2,by=c("Year","Location"))
 dim(data)
-write.csv(data,file="Merge_Data.csv")
+
+View(data2)
+
+write.csv(data1, data2,file ="Merge_Data.csv") ## Does not work. 
+
+View(Merge_Data.csv)                           ## I tried viewing this code but does not work.
+
 
 ## Summary Information (**15 points**) (Maxine)
 
