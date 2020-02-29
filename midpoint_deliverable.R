@@ -30,10 +30,7 @@
 
 #### Loading and viewing "by_area_hiv_est_from_1990-present.csv" file
 
-hiv_df <- read.csv(
-  file = "by_area_hiv_est_from_1990-present.csv", stringsAsFactors = FALSE)
 
-View(hiv_df)
 
 #### Loading and viewing "by_area_hiv_est_from_1990-present.csv" file
 
@@ -42,12 +39,33 @@ hiv_treatment_df <- read.csv(
 
 View(hiv_treatment_df)
 
+getwd()
+
+data1<-read.csv("by_area_hiv_est_from_1990-present.csv", stringsAsFactors = FALSE)
+data1<-data1[-(1:4),]
+data1<-data1[,-2]
+colnames(data1)<-data1[1,]
+colnames(data1)[1:2]<-c("Year","Location")
+data1<-data1[-1,]
+data2<-read.csv("by_area_hiv_treatment_est_from_1990-present.csv", stringsAsFactors = FALSE)
+data2<-data2[-(1:4),]
+data2<-data2[,-2]
+colnames(data2)<-data2[1,]
+colnames(data2)[1:2]<-c("Year","Location")
+data2<-data2[-1,]
+dim(data1)
+dim(data2)
+intersect(colnames(data1),colnames(data2))
+data<-merge(data1,data2,by=c("Year","Location"))
+dim(data)
+write.csv(data,file="Merge_Data.csv")
 
 ## Summary Information (**15 points**) (Maxine)
 
 Computes (and includes) 5 pieces of _relevant_ information using a function saved in a `script/` file. For each piece of information, make sure to:
 
 - Compute the information accurately in the script (**1 point**)
+
 
 - Include the piece of information using in-line R code in the paragraph (**1 point**)
 
