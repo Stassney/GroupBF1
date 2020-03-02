@@ -27,7 +27,9 @@
 
 "http://apps.who.int/gho/data/node.home"
 
-## Summary Information (Maxine)
+## Summary Information (**15 points**) (Maxine)
+
+#### Dataframe number 1
 
 hiv_df1 <- read.csv("by_area_hiv_est_from_1990-present.csv", stringsAsFactors = FALSE)
 
@@ -36,7 +38,9 @@ colnames(hiv_df1) <- hiv_df1[1,]
 colnames(hiv_df1)[1:2] <- c("Year","Location")
 hiv_df1 <- hiv_df1[-1,]
 
-View(hiv_df1)
+names(hiv_df1)[3] <- "Region"
+
+#### Dataframe number 2
 
 hiv_df2 <- read.csv("by_area_hiv_treatment_est_from_1990-present.csv", stringsAsFactors = FALSE)
 
@@ -45,20 +49,17 @@ colnames(hiv_df2)<-hiv_df2[1,]
 colnames(hiv_df2)[1:2] <- c("Year","Location")
 hiv_df2 <- hiv_df2[-1,]
 
+names(hiv_df2)[3] <- "Region"
+
 dim(hiv_df1)
 dim(hiv_df2)
 intersect(colnames(hiv_df1),colnames(hiv_df2))
 
-View(hiv_df2)
 
-## Merging two data frames together
+## Merging both data frames together
 
-merge_hiv_df <- merge(x=hiv_df1, y=hiv_df2, by=c("Year","Location"))
+merge_hiv_df <- merge(x=hiv_df1, y=hiv_df2, by=c("Year","Location", "Region"))
 dim(data)
-View(merge_hiv_df)
-
-names(merge_hiv_df)[3] <- "Country"
-
 
 ## Changing for col namnes for "merge_hiv_df"
 
@@ -80,14 +81,14 @@ colnames(merge_hiv_df)[42] <- "Mothers Needing Antiretrovirals-HIGH ESTIMATE"
 
 View(merge_hiv_df)
 
-#Null
+# Making missing value "..." into "NA"
+
 merge_hiv_df[merge_hiv_df == "..."] <- NA
 
 
-## Summary Information (**15 points**) (Maxine)
-
 Computes (and includes) 5 pieces of _relevant_ information using a function saved in a `script/` file. For each piece of information, make sure to:
-
+    
+  
 - Compute the information accurately in the script (**1 point**)
 
 
@@ -102,6 +103,8 @@ Computes (and includes) 5 pieces of _relevant_ information using a function save
 ####
 
 - Creates a summarized data frame to include as the table using `group_by()` (**2 points**)
+
+#### 
 
 - Intentionally sorts the table in a relevant way (**1 point**)
 
