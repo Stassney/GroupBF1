@@ -75,6 +75,8 @@ Computes (and includes) 5 pieces of _relevant_ information using a function save
 ## Summary Table (**10 points**) (Stassney)
 - Introduces the table, explaining why the particular grouping calculation was performed (**2 points**)
 
+####
+
 - Creates a summarized data frame to include as the table using `group_by()` (**2 points**)
 
 - Intentionally sorts the table in a relevant way (**1 point**)
