@@ -13,7 +13,7 @@
 ####   the prevalence of HIV in certain parts of the world.
 ####     - Questions such as:
 ####       - Where in the world is HAART therapy most accessible? (Interactive Map Chart)
-####       - Who is receiving HAART therapy? (Histogram on Categorical Variable)
+####       - Who is receiving HAART therapy? (Bar Graph)
 ####       - What demographics around the world are benefiting from HAART therapy? (Pie Chart)
 ####       - How accessibility to HAART therapy affects the prevalence of HIV in certain parts of the world?
   
@@ -76,6 +76,8 @@ Computes (and includes) 5 pieces of _relevant_ information using a function save
 ## Summary Table (**10 points**) (Stassney)
 - Introduces the table, explaining why the particular grouping calculation was performed (**2 points**)
 
+####
+
 - Creates a summarized data frame to include as the table using `group_by()` (**2 points**)
 
 - Intentionally sorts the table in a relevant way (**1 point**)
@@ -95,24 +97,21 @@ For each chart, you will be evaluated based on the following (remember, each cha
 
 # Where in the world is HAART therapy most accessible? (Interactive Map Chart)
 
-  map <- leaflet() %>% 
+map <- leaflet() %>% 
   addTiles() %>%
   addCircleMarkers(
     lng = data$long, lat = data$lat, radius = data$total,
     label = lapply(details, htmltools::HTML)
 
-# Who is receiving HAART therapy? (Histogram on Categorical Variable) data 2
+# Who is receiving HAART therapy? (Bar Graph) data 2
 
-qplot(data1$Location, geom= "histogram"))
-
-g + geom_bar(aes(fill=), width = 0.5) + 
-  theme(axis.text.x = element_text(angle=65, vjust=0.6)) + 
-  labs(title="Histogram on Categorical Variable", 
-       subtitle="People Receieving HAART Treatment")   
+receiving <-ggplot(, aes(, ))
+receiving +geom_bar(stat = "identity")
+View(receiving)
 
 # What demographics around the world are benefiting from HAART therapy? (Pie Chart)
 
-pie <- ggplot(mpg, aes(x = "", fill = factor(class))) + 
+demographics <- ggplot(, aes(x = "", fill = factor(class))) + 
   geom_bar(width = 1) +
   theme(axis.line = element_blank(), 
         plot.title = element_text(hjust=0.5)) + 
