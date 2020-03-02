@@ -13,7 +13,7 @@
 ####   the prevalence of HIV in certain parts of the world.
 ####     - Questions such as:
 ####       - Where in the world is HAART therapy most accessible? (Interactive Map Chart)
-####       - Who is receiving HAART therapy? (Histogram on Categorical Variable)
+####       - Who is receiving HAART therapy? (Bar Graph)
 ####       - What demographics around the world are benefiting from HAART therapy? (Pie Chart)
 ####       - How accessibility to HAART therapy affects the prevalence of HIV in certain parts of the world?
   
@@ -27,9 +27,13 @@
 
 "http://apps.who.int/gho/data/node.home"
 
+
 ## Summary Information (**15 points**) (Maxine)
 
 #### Dataframe number 1
+
+
+## Summary Information (Maxine)
 
 hiv_df1 <- read.csv("by_area_hiv_est_from_1990-present.csv", stringsAsFactors = FALSE)
 
@@ -60,6 +64,8 @@ intersect(colnames(hiv_df1),colnames(hiv_df2))
 
 merge_hiv_df <- merge(x=hiv_df1, y=hiv_df2, by=c("Year","Location", "Region"))
 dim(data)
+
+View(merge_hiv_df)
 
 ## Changing for col namnes for "merge_hiv_df"
 
@@ -121,21 +127,23 @@ Computes (and includes) 5 pieces of _relevant_ information using a function save
 ## Charts (**30 points**, 10 points each) (Khayla & An)
 For each chart, you will be evaluated based on the following (remember, each chart must be a **different chart type**):
 
-##testing
-  
+# Where in the world is HAART therapy most accessible? (Interactive Map Chart)
+
 map <- leaflet() %>% 
   addTiles() %>%
   addCircleMarkers(
     lng = data$long, lat = data$lat, radius = data$total,
     label = lapply(details, htmltools::HTML)
-  
-histogram <- ggplot(mpg, aes(location))
-g + geom_bar(aes(fill=), width = 0.5) + 
-  theme(axis.text.x = element_text(angle=65, vjust=0.6)) + 
-  labs(title="Histogram on Categorical Variable", 
-       subtitle="People Receieving HAART Treatment")   
- 
-pie <- ggplot(mpg, aes(x = "", fill = factor(class))) + 
+
+# Who is receiving HAART therapy? (Bar Graph) data 2
+bargraph <- data.frame()
+receiving <-ggplot(hiv_df2, aes(, ))
+librareceiving +geom_bar(stat = "identity")
+View(receiving)
+
+# What demographics around the world are benefiting from HAART therapy? (Pie Chart)
+
+demographics <- ggplot(, aes(x = "", fill = factor(class))) + 
   geom_bar(width = 1) +
   theme(axis.line = element_blank(), 
         plot.title = element_text(hjust=0.5)) + 
