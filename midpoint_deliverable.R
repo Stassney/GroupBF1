@@ -12,9 +12,9 @@
 #### - to understand how the distribution of HIV treatment (HAART therapy) affects 
 ####   the prevalence of HIV in certain parts of the world.
 ####     - Questions such as:
-####       - Where in the world is HAART therapy most accessible?
-####       - Who is receiving HAART therapy?
-####       - What demographics around the world are benefiting from HAART therapy?
+####       - Where in the world is HAART therapy most accessible? (Interactive Map Chart)
+####       - Who is receiving HAART therapy? (Histogram on Categorical Variable)
+####       - What demographics around the world are benefiting from HAART therapy? (Pie Chart)
 ####       - How accessibility to HAART therapy affects the prevalence of HIV in certain parts of the world?
   
 ### Data Source:
@@ -93,6 +93,28 @@ Computes (and includes) 5 pieces of _relevant_ information using a function save
 
 ## Charts (**30 points**, 10 points each) (Khayla & An)
 For each chart, you will be evaluated based on the following (remember, each chart must be a **different chart type**):
+#testing
+map <- leaflet() %>% 
+  addTiles() %>%
+  addCircleMarkers(
+    lng = data$long, lat = data$lat, radius = data$total,
+    label = lapply(details, htmltools::HTML)
+  
+histogram <- ggplot(mpg, aes(location))
+g + geom_bar(aes(fill=), width = 0.5) + 
+  theme(axis.text.x = element_text(angle=65, vjust=0.6)) + 
+  labs(title="Histogram on Categorical Variable", 
+       subtitle="People Receieving HAART Treatment")   
+ 
+pie <- ggplot(mpg, aes(x = "", fill = factor(class))) + 
+  geom_bar(width = 1) +
+  theme(axis.line = element_blank(), 
+        plot.title = element_text(hjust=0.5)) + 
+  labs(fill="class", 
+       x=NULL, 
+       y=NULL, 
+       title="Pie Chart of Denographics", 
+       caption="Benefiting from HAART Treatment") 
 
 - A description of what the chart attempts to answer/understand (**1 point**)
 - Selected the appropriate chart type / graphical encoding based on the question of interest and the data type(s) of the features (**3 point**)
