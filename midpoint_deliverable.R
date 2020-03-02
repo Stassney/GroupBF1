@@ -37,6 +37,7 @@ colnames(data1)<-data1[1,]
 colnames(data1)[1:2]<-c("Year","Location")
 data1<-data1[-1,]
 
+
 View(data1)
 
 #### Loading and viewing "by_area_hiv_treatment_est_from_1990-present.csv" file
@@ -91,19 +92,26 @@ Computes (and includes) 5 pieces of _relevant_ information using a function save
 
 ## Charts (**30 points**, 10 points each) (Khayla & An)
 For each chart, you will be evaluated based on the following (remember, each chart must be a **different chart type**):
-#testing
-map <- leaflet() %>% 
+
+# Where in the world is HAART therapy most accessible? (Interactive Map Chart)
+
+  map <- leaflet() %>% 
   addTiles() %>%
   addCircleMarkers(
     lng = data$long, lat = data$lat, radius = data$total,
     label = lapply(details, htmltools::HTML)
-  
-histogram <- ggplot(mpg, aes(location))
+
+# Who is receiving HAART therapy? (Histogram on Categorical Variable) data 2
+
+qplot(data1$Location, geom= "histogram"))
+
 g + geom_bar(aes(fill=), width = 0.5) + 
   theme(axis.text.x = element_text(angle=65, vjust=0.6)) + 
   labs(title="Histogram on Categorical Variable", 
        subtitle="People Receieving HAART Treatment")   
- 
+
+# What demographics around the world are benefiting from HAART therapy? (Pie Chart)
+
 pie <- ggplot(mpg, aes(x = "", fill = factor(class))) + 
   geom_bar(width = 1) +
   theme(axis.line = element_blank(), 
