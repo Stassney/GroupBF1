@@ -59,10 +59,13 @@ dim(hiv_df1)
 dim(hiv_df2)
 intersect(colnames(hiv_df1),colnames(hiv_df2))
 
+#### hiv_df2 dataframe without NA columns
+
+hiv_df2_noNA <- hiv_df2[-c(20:50)]
 
 ## Merging both data frames together
 
-merge_hiv_df <- merge(x=hiv_df1, y=hiv_df2, by=c("Year","Location", "Region"))
+merge_hiv_df <- merge(x=hiv_df1, y=hiv_df2_noNA, by=c("Year","Location", "Region"))
 dim(data)
 
 View(merge_hiv_df)
