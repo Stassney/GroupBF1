@@ -12,9 +12,9 @@
 #### - to understand how the distribution of HIV treatment (HAART therapy) affects 
 ####   the prevalence of HIV in certain parts of the world.
 ####     - Questions such as:
-####       - Where in the world is HAART therapy most accessible?
-####       - Who is receiving HAART therapy?
-####       - What demographics around the world are benefiting from HAART therapy?
+####       - Where in the world is HAART therapy most accessible? (Interactive Map Chart)
+####       - Who is receiving HAART therapy? (Histogram on Categorical Variable)
+####       - What demographics around the world are benefiting from HAART therapy? (Pie Chart)
 ####       - How accessibility to HAART therapy affects the prevalence of HIV in certain parts of the world?
   
 ### Data Source:
