@@ -58,6 +58,8 @@ dim(data)
 
 names(merge_hiv_df)[3] <- "Country"
 
+View(merge_hiv_df)
+
 ## Changing for col namnes for "merge_hiv_df"
 
 colnames(merge_hiv_df)[13] <- "AIDS(death)-Children and Adults"
@@ -116,13 +118,8 @@ Computes (and includes) 5 pieces of _relevant_ information using a function save
 ## Charts (**30 points**, 10 points each) (Khayla & An)
 For each chart, you will be evaluated based on the following (remember, each chart must be a **different chart type**):
 
-<<<<<<< HEAD
 # Where in the world is HAART therapy most accessible? (Interactive Map Chart)
 
-=======
-##testing
-  
->>>>>>> c9943a69f8ff7a00849f88dff23c72ec4019d968
 map <- leaflet() %>% 
   addTiles() %>%
   addCircleMarkers(
@@ -130,9 +127,9 @@ map <- leaflet() %>%
     label = lapply(details, htmltools::HTML)
 
 # Who is receiving HAART therapy? (Bar Graph) data 2
-
-receiving <-ggplot(, aes(, ))
-receiving +geom_bar(stat = "identity")
+bargraph <- data.frame()
+receiving <-ggplot(hiv_df2, aes(, ))
+librareceiving +geom_bar(stat = "identity")
 View(receiving)
 
 # What demographics around the world are benefiting from HAART therapy? (Pie Chart)
