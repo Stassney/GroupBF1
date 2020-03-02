@@ -27,34 +27,9 @@
 
 "http://apps.who.int/gho/data/node.home"
 
+
 ## Summary Information (Maxine)
 
-<<<<<<< HEAD
-#### Loading and viewing "by_area_hiv_est_from_1990-present.csv" file
-
-data1<-read.csv("by_area_hiv_est_from_1990-present.csv", stringsAsFactors = FALSE)
-data1<-data1[-(1:4),]
-data1<-data1[,-2]
-colnames(data1)<-data1[1,]
-colnames(data1)[1:2]<-c("Year","Location")
-data1<-data1[-1,]
-
-
-View(data1)
-
-#### Loading and viewing "by_area_hiv_treatment_est_from_1990-present.csv" file
-
-data2<-read.csv("by_area_hiv_treatment_est_from_1990-present.csv", stringsAsFactors = FALSE)
-data2<-data2[-(1:4),]
-data2<-data2[,-2]
-colnames(data2)<-data2[1,]
-colnames(data2)[1:2]<-c("Year","Location")
-data2<-data2[-1,]
-dim(data1)
-dim(data2)
-intersect(colnames(data1),colnames(data2))
-data<-merge(data1,data2,by=c("Year","Location"))
-=======
 hiv_df1 <- read.csv("by_area_hiv_est_from_1990-present.csv", stringsAsFactors = FALSE)
 
 hiv_df1 <- hiv_df1[-(1:4),]
@@ -70,7 +45,6 @@ hiv_df2 <- hiv_df2[-(1:4),]
 colnames(hiv_df2)<-hiv_df2[1,]
 colnames(hiv_df2)[1:2] <- c("Year","Location")
 hiv_df2 <- hiv_df2[-1,]
-
 dim(hiv_df1)
 dim(hiv_df2)
 intersect(colnames(hiv_df1),colnames(hiv_df2))
@@ -80,12 +54,9 @@ View(hiv_df2)
 ## Merging two data frames together
 
 merge_hiv_df <- merge(x=hiv_df1, y=hiv_df2, by=c("Year","Location"))
->>>>>>> c9943a69f8ff7a00849f88dff23c72ec4019d968
 dim(data)
-View(merge_hiv_df)
 
 names(merge_hiv_df)[3] <- "Country"
-
 
 ## Changing for col namnes for "merge_hiv_df"
 
