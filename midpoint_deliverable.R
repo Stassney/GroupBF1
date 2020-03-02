@@ -20,31 +20,99 @@
 ### Data Source:
 
 #### UNAIDS 2019 HIV estimates
-"https://www. link"
+
+"http://apps.who.int/gho/data/node.home"
 
 #### UNAIDS 2019 HIV estimates treatments
-"https://www. link"
+
+"http://apps.who.int/gho/data/node.home"
+
+
+#### Loading and viewing "by_area_hiv_est_from_1990-present.csv" file
+
+data1<-read.csv("by_area_hiv_est_from_1990-present.csv", stringsAsFactors = FALSE)
+data1<-data1[-(1:4),]
+data1<-data1[,-2]
+colnames(data1)<-data1[1,]
+colnames(data1)[1:2]<-c("Year","Location")
+data1<-data1[-1,]
+
+View(data1)
+
+#### Loading and viewing "by_area_hiv_treatment_est_from_1990-present.csv" file
+
+data2<-read.csv("by_area_hiv_treatment_est_from_1990-present.csv", stringsAsFactors = FALSE)
+data2<-data2[-(1:4),]
+data2<-data2[,-2]
+colnames(data2)<-data2[1,]
+colnames(data2)[1:2]<-c("Year","Location")
+data2<-data2[-1,]
+dim(data1)
+dim(data2)
+intersect(colnames(data1),colnames(data2))
+data<-merge(data1,data2,by=c("Year","Location"))
+dim(data)
+
+View(data2)
+
+write.csv(data1, data2,file ="Merge_Data.csv") ## Does not work. 
+
+View(Merge_Data.csv)                           ## I tried viewing this code but does not work.
 
 
 ## Summary Information (**15 points**) (Maxine)
+
 Computes (and includes) 5 pieces of _relevant_ information using a function saved in a `script/` file. For each piece of information, make sure to:
-  - Compute the information accurately in the script (**1 point**)
+
+- Compute the information accurately in the script (**1 point**)
+
+
 - Include the piece of information using in-line R code in the paragraph (**1 point**)
+
 - Make clear the relevance of including the information (if not apparent) (**1 point**)
 
 
 ## Summary Table (**10 points**) (Stassney)
 - Introduces the table, explaining why the particular grouping calculation was performed (**2 points**)
+
 - Creates a summarized data frame to include as the table using `group_by()` (**2 points**)
+
 - Intentionally sorts the table in a relevant way (**1 point**)
+
 - Only displays relevant columns in the table (**1 point**)
+
 - Displays well formatted column names (**1 point**)
-- Successfully renders the table in the report using an appropriate package (e.g., don't just print out the data frame) (**1 point**)
+
+- Successfully renders the table in the report using an appropriate package 
+# (e.g., don't just print out the data frame) (**1 point**)
+
 - Interprets information the table, honing in on important information (**2 points**)
 
 
 ## Charts (**30 points**, 10 points each) (Khayla & An)
 For each chart, you will be evaluated based on the following (remember, each chart must be a **different chart type**):
+#testing
+map <- leaflet() %>% 
+  addTiles() %>%
+  addCircleMarkers(
+    lng = data$long, lat = data$lat, radius = data$total,
+    label = lapply(details, htmltools::HTML)
+  
+histogram <- ggplot(mpg, aes(location))
+g + geom_bar(aes(fill=), width = 0.5) + 
+  theme(axis.text.x = element_text(angle=65, vjust=0.6)) + 
+  labs(title="Histogram on Categorical Variable", 
+       subtitle="People Receieving HAART Treatment")   
+ 
+pie <- ggplot(mpg, aes(x = "", fill = factor(class))) + 
+  geom_bar(width = 1) +
+  theme(axis.line = element_blank(), 
+        plot.title = element_text(hjust=0.5)) + 
+  labs(fill="class", 
+       x=NULL, 
+       y=NULL, 
+       title="Pie Chart of Denographics", 
+       caption="Benefiting from HAART Treatment") 
 
 - A description of what the chart attempts to answer/understand (**1 point**)
 - Selected the appropriate chart type / graphical encoding based on the question of interest and the data type(s) of the features (**3 point**)
