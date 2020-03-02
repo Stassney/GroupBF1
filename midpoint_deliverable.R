@@ -27,37 +27,61 @@
 
 "http://apps.who.int/gho/data/node.home"
 
+## Summary Information (Maxine)
 
-#### Loading and viewing "by_area_hiv_est_from_1990-present.csv" file
+hiv_df1 <- read.csv("by_area_hiv_est_from_1990-present.csv", stringsAsFactors = FALSE)
 
-data1<-read.csv("by_area_hiv_est_from_1990-present.csv", stringsAsFactors = FALSE)
-data1<-data1[-(1:4),]
-data1<-data1[,-2]
-colnames(data1)<-data1[1,]
-colnames(data1)[1:2]<-c("Year","Location")
-data1<-data1[-1,]
+hiv_df1 <- hiv_df1[-(1:4),]
+colnames(hiv_df1) <- hiv_df1[1,]
+colnames(hiv_df1)[1:2] <- c("Year","Location")
+hiv_df1 <- hiv_df1[-1,]
 
-View(data1)
+View(hiv_df1)
 
-#### Loading and viewing "by_area_hiv_treatment_est_from_1990-present.csv" file
+hiv_df2 <- read.csv("by_area_hiv_treatment_est_from_1990-present.csv", stringsAsFactors = FALSE)
 
-data2<-read.csv("by_area_hiv_treatment_est_from_1990-present.csv", stringsAsFactors = FALSE)
-data2<-data2[-(1:4),]
-data2<-data2[,-2]
-colnames(data2)<-data2[1,]
-colnames(data2)[1:2]<-c("Year","Location")
-data2<-data2[-1,]
-dim(data1)
-dim(data2)
-intersect(colnames(data1),colnames(data2))
-data<-merge(data1,data2,by=c("Year","Location"))
+hiv_df2 <- hiv_df2[-(1:4),]
+colnames(hiv_df2)<-hiv_df2[1,]
+colnames(hiv_df2)[1:2] <- c("Year","Location")
+hiv_df2 <- hiv_df2[-1,]
+
+dim(hiv_df1)
+dim(hiv_df2)
+intersect(colnames(hiv_df1),colnames(hiv_df2))
+
+View(hiv_df2)
+
+## Merging two data frames together
+
+merge_hiv_df <- merge(x=hiv_df1, y=hiv_df2, by=c("Year","Location"))
 dim(data)
+View(merge_hiv_df)
 
-View(data2)
+names(merge_hiv_df)[3] <- "Country"
 
-write.csv(data1, data2,file ="Merge_Data.csv") ## Does not work. 
 
-View(Merge_Data.csv)                           ## I tried viewing this code but does not work.
+## Changing for col namnes for "merge_hiv_df"
+
+colnames(merge_hiv_df)[13] <- "AIDS(death)-Children and Adults"
+colnames(merge_hiv_df)[14] <- "AIDS(death)-Children and Adults-LOW ESTIMATE."
+colnames(merge_hiv_df)[14] <- "AIDS(death)-Children and Adults-HIGH ESTIMATE."
+colnames(merge_hiv_df)[15] <- "AIDS(death)-Children and Adults-HIGH ESTIMATE."
+colnames(merge_hiv_df)[16] <- "AIDS(death)-Children (0-14)."
+colnames(merge_hiv_df)[15] <- "AIDS(death)-Children-LOW ESTIMATE."
+colnames(merge_hiv_df)[15] <- "AIDS(death)-Children AND ADULTS-HIGH ESTIMATE."
+colnames(merge_hiv_df)[17] <- "AIDS(death)-Children (0-14)-LOW ESTIMATE."
+colnames(merge_hiv_df)[18] <- "AIDS(death)-Children (0-14)-HIGH ESTIMATE."
+colnames(merge_hiv_df)[19] <- "AIDS(death)-Adults (15+)"
+colnames(merge_hiv_df)[20] <- "AIDS(death)-Adults (15+)-LOW ESTIMATE"
+colnames(merge_hiv_df)[21] <- "AIDS(death)-Adults (15+)-HIGH ESTIMATE"
+colnames(merge_hiv_df)[40] <- "Mothers Needing Antiretrovirals"
+colnames(merge_hiv_df)[41] <- "Mothers Needing Antiretrovirals-LOW ESTIMATE"
+colnames(merge_hiv_df)[42] <- "Mothers Needing Antiretrovirals-HIGH ESTIMATE"
+
+View(merge_hiv_df)
+
+#Null
+merge_hiv_df[merge_hiv_df == "..."] <- NA
 
 
 ## Summary Information (**15 points**) (Maxine)
@@ -93,7 +117,9 @@ Computes (and includes) 5 pieces of _relevant_ information using a function save
 
 ## Charts (**30 points**, 10 points each) (Khayla & An)
 For each chart, you will be evaluated based on the following (remember, each chart must be a **different chart type**):
-#testing
+
+##testing
+  
 map <- leaflet() %>% 
   addTiles() %>%
   addCircleMarkers(
@@ -142,8 +168,3 @@ Report is professionally formatted, including (but not limtted to):
 
 ## Code clarity (**5 points**) (Khayla & Anura)
 To earn full points, you must not have any `lintr()` errors.
-- -1 point for 1 - 2 `lintr` errors
-- -2 points for 3 - 4 `lintr` errors
-- -3 points for 5 - 6 `lintr` errors
-- -4 points for 7 - 8 `lintr` errors
-- -5 points for 9+ `lintr` errors
