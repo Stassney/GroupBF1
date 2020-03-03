@@ -3,6 +3,12 @@
 
 ## Introductory paragraph (Stassney)
 
+library(lintr)
+library(dplyr)
+library(ggplot2)
+library(shiny)
+library(styler)
+
 ### Introduction:
 
 #### There are about 37.9 M people (ppl) globally affected by HIV today. 
@@ -65,7 +71,8 @@ hiv_df2_noNA <- hiv_df2[-c(20:50)]
 merge_hiv_df <- merge(x=hiv_df1, y=hiv_df2_noNA, by=c("Year","Location", "Region"))
 dim(data)
 
-#### Viewing the 
+#### Viewing merge_hiv_df
+
 View(merge_hiv_df)
 
 ## Changing for col namnes for "merge_hiv_df"
@@ -88,21 +95,61 @@ colnames(merge_hiv_df)[42] <- "Mothers Needing Antiretrovirals-HIGH ESTIMATE"
 
 View(merge_hiv_df)
 
-# Making missing value "..." into "NA"
+#### Making missing value "..." into "NA"
 
 merge_hiv_df[merge_hiv_df == "..."] <- NA
 
 
-Computes (and includes) 5 pieces of _relevant_ information using a function saved in a `script/` file. For each piece of information, make sure to:
+#### 5 pieces of relevant information using a function saved in a `script/` file.
+#### For each piece of information, make sure to:
     
-  
-- Compute the information accurately in the script (**1 point**)
+#### Learn and show where in the world HIV is most common
+
+hiv_worldwide <- merge_hiv_df %>%
+  filter(Region == max(Region)) %>%
+  select("Estimated adults (15+) living with HIV", Region)
+
+#### Paragraph:
+#### Our Data shows that Central and Western Europe have the
+#### highest number of people living with HIV. Our data
+#### reports that 2,200,000 people are living with HIV
+
+####  Where in the world is HAART therapy most accessible?
+
+hiv_worldwide <- hiv_df2_noNA %>%
+  filter(Region == max(Region))%>%
+  select(Year, Region, 'Percent of People all ages living with HIV receiving ART')
+
+#### Paragraph:
+#### HAART Therapy is found is mainly found in North America..
+#### The code displays a list of countries sand regions where there are more than 
+#### In 2018, 79% percent of people living with HIV were receivng  ART therapy. 
+
+####  Who is receiving HAART therapy? (Bar Graph)
+
+hiv_worldwide <- hiv_df2_noNA %>%
+  filter(Year == max(Year))%>%
+  select('Number of adults (15+) receiving ART', `Number of children (0-14) receiving ART`) %>%
+  filter(`Number of children (0-14) receiving ART` == max(`Number of children (0-14) receiving ART`))
+
+#### Parapgraph:
+#### People of all ages are receiving HAART therapy.
+#### Our data reports that both children and adults are receiving ART
+#### Therapy. Adults rank higher than children in receiving the therapy
+#### with 22,394,000 cases 
+
+#### Who is not receiving ART therapy?
+
+hiv_worldwide <- hiv_df2_noNA %>%
+  filter( Region < 500) %>%
+  select(Year, Region, `Number of adults (15+) receiving ART`, `Number of children (0-14) receiving ART`)
+  filter(Region == min(Region))
 
 
-- Include the piece of information using in-line R code in the paragraph (**1 point**)
-
-- Make clear the relevance of including the information (if not apparent) (**1 point**)
-
+#### Paragraph:
+#### Our dataset displays that there are zero
+#### reported cases of children receiving HAART therapy in Afghanistan. 
+        
 
 ## Summary Table (Stassney)
 
@@ -134,18 +181,18 @@ summary(merge_hiv_df)
 
 ####  Creates a summarized data frame to include as the table using `group_by()
 
-year <- merge_hiv_df %>% 
+max_mother_haart <- merge_hiv_df %>% 
   group_by(Year) %>% 
-  summarize(Total death = max(Total death)) %>% 
-  select(Total death)
+  mutate(Total_death == as.numeric(`Mothers Needing Antiretrovirals`)) %>% 
+  summarize(Total_death = max(`Mothers Needing Antiretrovirals`))
 
 #### Intentionally sorts the table in a relevant way:
 
-merge_hiv_df <- arrange(merge_hiv_df, desc(Total death))
+merge_hiv_df <- arrange(merge_hiv_df, desc(Total_death))
 
 #### Displays well formatted column names (**1 point**)
 
-names(merge_hiv_df)[13] <- "Total death"
+names(merge_hiv_df)[13] <- "Total_death"
 names(merge_hiv_df)[1] <- "Year"
 
 #### Only displays relevant columns in the table
@@ -153,13 +200,12 @@ names(merge_hiv_df)[1] <- "Year"
 #### Dataframe Consist of:
 #### year, region, demographics, age, and total AIDS death
 
-relevant_info_df <- select(
-  merge_hiv_df, Year:Total death,
-  -Location)
+relevant_info_df <- merge_hiv_df %>% 
+  select(Year:Total_death, -Location)
+
 
 #### Renders the table in the report using an appropriate package 
 
-install.packages("shiny")
 library(shiny)
 
 renderTable(expr, striped = FALSE, hover = FALSE, bordered = FALSE,
@@ -175,16 +221,13 @@ renderTable(expr, striped = FALSE, hover = FALSE, bordered = FALSE,
 #### Question 1: Where in the world is HAART therapy most accessible?
 #### (Interactive Map Chart)
 
-<<<<<<< HEAD
-
 #### Question 2: Who is receiving HAART therapy? 
 #### (Bar plot) 
-=======
-  
+
+
 #### Insert paragraph
   
-# Who is receiving HAART therapy? (Bar plot) 
->>>>>>> 3d1724057805853f6dac57540b72a2ad7accd731
+#### Who is receiving HAART therapy? (Bar plot) 
 
 names(hiv_df2_noNA)[4] <- "Percent of people receiving ART"
 receiving_df <- hiv_df2_noNA %>%
@@ -199,16 +242,14 @@ receiving_therapy <- barplot(
   num, names.arg = name,xlab = "Region", ylab = "People receiving HAART therapy", 
   col = "blue", main = "Percent of people Receiving Art")
 
-
-<<<<<<< HEAD
 #### Question 3: What demographics around the world are not benefiting from HAART therapy? 
 #### (Pie Chart)
-=======
+
 #### The bar graph that I created shows a percentage of who receiving HAART therapy
 #### based on the region. This bar graph takes the top 10 percent
 
-# What demographics around the world are not benefiting from HAART therapy? (Pie Chart)
->>>>>>> 3d1724057805853f6dac57540b72a2ad7accd731
+#### What demographics around the world are not benefiting from HAART therapy? 
+####(Pie Chart)
 
 names(merge_hiv_df)[13] <- "Total death"
 not_benefiting <- merge_hiv_df %>%
@@ -220,33 +261,16 @@ name_1 <- c("Middle East and North Africa",  "Gambia", "Honduras",
             "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan")
 num_1 <- c(8400, 980,780, 710, 7800, 910, 720, 710, 9900)
 
-<<<<<<< HEAD
-demographics_therapy <- pie(num_1, labels = num_1 , main = "Demographics not benefiting from therapy", 
+HEADdemographics_therapy <- pie(num_1, labels = num_1 , main = "Demographics not benefiting from therapy", 
                             col = rainbow(length(num_1)))
 legend("topleft", c("Middle East and North Africa", "Gambia", 
                     "Honduras", "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan"), cex = 0.8,
                      fill = rainbow(length(num_1)))
-=======
+
 demographics_therapy <- pie(num_1, labels = num_1 , main = "Demographics not benefiting from therapy", col = rainbow(length(num_1) ) )
 legend("topleft", c("Middle East and North Africa",  "Gambia", " Honduras", "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan"), cex = 0.8,
                      fill = rainbow(length(num_1) ) )
 #### Insert Paragraph
->>>>>>> 3d1724057805853f6dac57540b72a2ad7accd731
 
 
-## Code and Report structure (Maxine & Stassney)
-Code is broken up appropriately into the described files.
-- Each file is in the appropriate folder: `scripts/`, except `index.Rmd`, which is in the root (**1 point**)
-- Each file is loaded into the `index.Rmd` file (**1 point**)
-- Only the `index.Rmd` file loads the data (**1 point**)
 
-
-## Code clarity (Khayla & Aniruddh)
-
-#### Use "lintr" package to help remove lintr() errors.
-
-install.packages("lintr")
-
-#### Load "lintr" packages
-
-library(lintr)
