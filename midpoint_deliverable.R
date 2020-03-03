@@ -28,12 +28,9 @@
 "http://apps.who.int/gho/data/node.home"
 
 
-## Summary Information (**15 points**) (Maxine)
+## Summary Information (Maxine)
 
 #### Dataframe number 1
-
-
-## Summary Information (Maxine)
 
 hiv_df1 <- read.csv("by_area_hiv_est_from_1990-present.csv", stringsAsFactors = FALSE)
 
@@ -63,11 +60,12 @@ intersect(colnames(hiv_df1),colnames(hiv_df2))
 
 hiv_df2_noNA <- hiv_df2[-c(20:50)]
 
-## Merging both data frames together
+#### Merging both data frames together
 
 merge_hiv_df <- merge(x=hiv_df1, y=hiv_df2_noNA, by=c("Year","Location", "Region"))
 dim(data)
 
+#### Viewing the 
 View(merge_hiv_df)
 
 ## Changing for col namnes for "merge_hiv_df"
@@ -106,25 +104,72 @@ Computes (and includes) 5 pieces of _relevant_ information using a function save
 - Make clear the relevance of including the information (if not apparent) (**1 point**)
 
 
-## Summary Table (**10 points**) (Stassney)
-- Introduces the table, explaining why the particular grouping calculation was performed (**2 points**)
+## Summary Table (Stassney)
 
-####
+#### Introducing  the table:
+#### Total number of rows in "merge_hiv_df"
 
-- Creates a summarized data frame to include as the table using `group_by()` (**2 points**)
+nrow(merge_hiv_df)
+
+#### There are 1661 total rows
+
+#### Total number of columns in "merge_hiv_df"
+
+ncol(merge_hiv_df)
+
+#### There are 67 total columns 
+
+#### Summary of "merge_hiv_df"
+
+summary(merge_hiv_df)
+
+
+#### Explain why the grouping calculation was performed:
+
+#### The dataframe "merge_hiv_df" came from two different data set.
+#### The first data.cvs file was named under "hiv_df1" and 
+#### the second data.csv file was named under "hiv_df2".
+#### However, dataframe "hiv_df2" was altered and shortend.
+#### Filtering the specific columns helped us solve our specific questions faster.
+
+####  Creates a summarized data frame to include as the table using `group_by()
+
+year <- merge_hiv_df %>% 
+  group_by(Year) %>% 
+  summarize(Total AIDS Death = max(Total AIDS Death)) %>% 
+  select(Total AIDS Death)
+
+#### Intentionally sorts the table in a relevant way:
+
+merge_hiv_df <- arrange(merge_hiv_df, desc(aids_death))
+
+#### Displays well formatted column names (**1 point**)
+
+names(merge_hiv_df)[13] <- "Aids_death"
+names(merge_hiv_df)[1] <- "Year"
+
+#### Only displays relevant columns in the table
+
+#### Dataframe Consist of:
+#### year, region, demographics, age, and total AIDS death
+
+relevant_info_df <- select(
+  merge_hiv_df, Year:Aids_death,
+  -Location)
+
+#### Renders the table in the report using an appropriate package 
+
+install.packages("shiny")
+library(shiny)
+
+renderTable(expr, striped = FALSE, hover = FALSE, bordered = FALSE,
+            spacing = c("s"), width = "auto", align = NULL,
+            rownames = FALSE, colnames = TRUE, digits = NULL, na = "NA",
+            env = merge_hiv_df, quoted = FALSE, outputArgs = merge_hiv_df)
+
+#### Interprets information the table, honing in on important information
 
 #### 
-
-- Intentionally sorts the table in a relevant way (**1 point**)
-
-- Only displays relevant columns in the table (**1 point**)
-
-- Displays well formatted column names (**1 point**)
-
-- Successfully renders the table in the report using an appropriate package 
-# (e.g., don't just print out the data frame) (**1 point**)
-
-- Interprets information the table, honing in on important information (**2 points**)
 
 
 ## Charts (**30 points**, 10 points each) (Khayla & An)
@@ -166,19 +211,20 @@ demographics <- ggplot(, aes(x = "", fill = factor(class))) +
 - Interprets information from the chart, honing in on important information (**2 points**)
 
 
-## Code and Report structure (**7 points**) (Maxine & Stassney)
+## Code and Report structure (Maxine & Stassney)
 Code is broken up appropriately into the described files.
 - Each file is in the appropriate folder: `scripts/`, except `index.Rmd`, which is in the root (**1 point**)
 - Each file is loaded into the `index.Rmd` file (**1 point**)
 - Only the `index.Rmd` file loads the data (**1 point**)
-- Project uses appropriate packages and logic throughout to produce the report (**1 points**)
-- All unused code is removed. (**1 point**)
-- Comments are used throughout to express purpose of each section (**1 point**)
-
-Report is professionally formatted, including (but not limtted to):
-  - Using headers to delineate between sections (**1 point**)
-- Removing any warnings/messages from your script in the report (**1 point**)
 
 
-## Code clarity (**5 points**) (Khayla & Anura)
-To earn full points, you must not have any `lintr()` errors.
+## Code clarity (Khayla & Aniruddh)
+## To earn full points, you must not have any `lintr()` errors.
+
+#### Use "lintr" package to help remove lintr() errors.
+
+install.packages("lintr")
+
+#### Load "lintr" packages
+
+library(lintr)
