@@ -93,15 +93,16 @@ View(merge_hiv_df)
 merge_hiv_df[merge_hiv_df == "..."] <- NA
 
 
-Computes (and includes) 5 pieces of _relevant_ information using a function saved in a `script/` file. For each piece of information, make sure to:
-    
+#Computes (and includes) 5 pieces of _relevant_ information using a function saved in a `script/` file. For each piece of information, make sure to:
   
-- Compute the information accurately in the script (**1 point**)
+    
+
+#- Compute the information accurately in the script (**1 point**)
 
 
-- Include the piece of information using in-line R code in the paragraph (**1 point**)
+#- Include the piece of information using in-line R code in the paragraph (**1 point**)
 
-- Make clear the relevance of including the information (if not apparent) (**1 point**)
+#- Make clear the relevance of including the information (if not apparent) (**1 point**)
 
 
 ## Summary Table (Stassney)
