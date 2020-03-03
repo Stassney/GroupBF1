@@ -175,9 +175,16 @@ renderTable(expr, striped = FALSE, hover = FALSE, bordered = FALSE,
 #### Question 1: Where in the world is HAART therapy most accessible?
 #### (Interactive Map Chart)
 
+<<<<<<< HEAD
 
 #### Question 2: Who is receiving HAART therapy? 
 #### (Bar plot) 
+=======
+  
+#### Insert paragraph
+  
+# Who is receiving HAART therapy? (Bar plot) 
+>>>>>>> 3d1724057805853f6dac57540b72a2ad7accd731
 
 names(hiv_df2_noNA)[4] <- "Percent of people receiving ART"
 receiving_df <- hiv_df2_noNA %>%
@@ -193,8 +200,15 @@ receiving_therapy <- barplot(
   col = "blue", main = "Percent of people Receiving Art")
 
 
+<<<<<<< HEAD
 #### Question 3: What demographics around the world are not benefiting from HAART therapy? 
 #### (Pie Chart)
+=======
+#### The bar graph that I created shows a percentage of who receiving HAART therapy
+#### based on the region. This bar graph takes the top 10 percent
+
+# What demographics around the world are not benefiting from HAART therapy? (Pie Chart)
+>>>>>>> 3d1724057805853f6dac57540b72a2ad7accd731
 
 names(merge_hiv_df)[13] <- "Total death"
 not_benefiting <- merge_hiv_df %>%
@@ -206,11 +220,18 @@ name_1 <- c("Middle East and North Africa",  "Gambia", "Honduras",
             "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan")
 num_1 <- c(8400, 980,780, 710, 7800, 910, 720, 710, 9900)
 
+<<<<<<< HEAD
 demographics_therapy <- pie(num_1, labels = num_1 , main = "Demographics not benefiting from therapy", 
                             col = rainbow(length(num_1)))
 legend("topleft", c("Middle East and North Africa", "Gambia", 
                     "Honduras", "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan"), cex = 0.8,
                      fill = rainbow(length(num_1)))
+=======
+demographics_therapy <- pie(num_1, labels = num_1 , main = "Demographics not benefiting from therapy", col = rainbow(length(num_1) ) )
+legend("topleft", c("Middle East and North Africa",  "Gambia", " Honduras", "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan"), cex = 0.8,
+                     fill = rainbow(length(num_1) ) )
+#### Insert Paragraph
+>>>>>>> 3d1724057805853f6dac57540b72a2ad7accd731
 
 
 ## Code and Report structure (Maxine & Stassney)
