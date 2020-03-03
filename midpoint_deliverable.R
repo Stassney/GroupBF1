@@ -14,7 +14,7 @@
 ####     - Questions such as:
 ####       - Where in the world is HAART therapy most accessible? (Interactive Map Chart)
 ####       - Who is receiving HAART therapy? (Bar Graph)
-####       - What demographics around the world are benefiting from HAART therapy? (Pie Chart)
+####       - What demographics around the world are not benefiting from HAART therapy? (Pie Chart)
 ####       - How accessibility to HAART therapy affects the prevalence of HIV in certain parts of the world?
   
 ### Data Source:
@@ -177,29 +177,36 @@ For each chart, you will be evaluated based on the following (remember, each cha
 
 # Where in the world is HAART therapy most accessible? (Interactive Map Chart)
 
-map <- leaflet() %>% 
-  addTiles() %>%
-  addCircleMarkers(
-    lng = data$long, lat = data$lat, radius = data$total,
-    label = lapply(details, htmltools::HTML)
+  
 
-# Who is receiving HAART therapy? (Bar Graph) data 2
-bargraph <- data.frame()
-receiving <-ggplot(hiv_df2, aes(, ))
-librareceiving +geom_bar(stat = "identity")
-View(receiving)
+# Who is receiving HAART therapy? (Bar plot) 
 
-# What demographics around the world are benefiting from HAART therapy? (Pie Chart)
+names(hiv_df2_noNA)[4] <- "Percent of people receiving ART"
+receiving_df <- hiv_df2_noNA %>%
+  filter(Year == "2018") %>%
+  select(Year, Region, `Percent of people receiving ART`) %>%
+  top_n(10)
+name <- c("Eswatini", "Madagascar", "Namibia", " Rwanda", "Zimbabwe", " Jordan", "Cape Verde", "Denmark", "Italy", "Portugal", "Spain")
+num <- c(86, 9, 92, 87, 88, 84, 89, 89, 91, 90, 84)
 
-demographics <- ggplot(, aes(x = "", fill = factor(class))) + 
-  geom_bar(width = 1) +
-  theme(axis.line = element_blank(), 
-        plot.title = element_text(hjust=0.5)) + 
-  labs(fill="class", 
-       x=NULL, 
-       y=NULL, 
-       title="Pie Chart of Denographics", 
-       caption="Benefiting from HAART Treatment") 
+
+receiving_therapy <- barplot(num, names.arg = name,xlab = "Region", ylab = "People receiving HAART therapy", col = "blue", main = "Percent of people Receiving Art")
+
+
+# What demographics around the world are not benefiting from HAART therapy? (Pie Chart)
+
+names(merge_hiv_df)[13] <- "Total death"
+not_benefiting <- merge_hiv_df %>%
+  filter(Year == "2018") %>%
+  select(Year, Region, `Total death`) %>%
+  top_n(10)
+
+name_1 <- c("Middle East and North Africa",  "Gambia", " Honduras", "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan")
+num_1 <- c(8400, 980,780, 710, 7800, 910, 720, 710, 9900)
+
+demographics_therapy <- pie(num_1, labels = num_1 , main = "Demographics not benefiting from therapy", col = rainbow(length(num_1) ) )
+legend("topleft", c("Middle East and North Africa",  "Gambia", " Honduras", "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan"), cex = 0.8,
+                     fill = rainbow(length(num_1) ) )
 
 - A description of what the chart attempts to answer/understand (**1 point**)
 - Selected the appropriate chart type / graphical encoding based on the question of interest and the data type(s) of the features (**3 point**)
