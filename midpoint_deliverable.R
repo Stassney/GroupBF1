@@ -3,6 +3,12 @@
 
 ## Introductory paragraph (Stassney)
 
+library(lintr)
+library(dplyr)
+library(ggplot2)
+library(shiny)
+library(styler)
+
 ### Introduction:
 
 #### There are about 37.9 M people (ppl) globally affected by HIV today. 
@@ -65,7 +71,8 @@ hiv_df2_noNA <- hiv_df2[-c(20:50)]
 merge_hiv_df <- merge(x=hiv_df1, y=hiv_df2_noNA, by=c("Year","Location", "Region"))
 dim(data)
 
-#### Viewing the 
+#### Viewing the merged data frame
+
 View(merge_hiv_df)
 
 ## Changing for col namnes for "merge_hiv_df"
@@ -86,8 +93,6 @@ colnames(merge_hiv_df)[40] <- "Mothers Needing Antiretrovirals"
 colnames(merge_hiv_df)[41] <- "Mothers Needing Antiretrovirals-LOW ESTIMATE"
 colnames(merge_hiv_df)[42] <- "Mothers Needing Antiretrovirals-HIGH ESTIMATE"
 
-View(merge_hiv_df)
-
 # Making missing value "..." into "NA"
 
 merge_hiv_df[merge_hiv_df == "..."] <- NA
@@ -95,9 +100,6 @@ merge_hiv_df[merge_hiv_df == "..."] <- NA
 
 #Computes (and includes) 5 pieces of _relevant_ information using a function saved in a `script/` file. For each piece of information, make sure to:
   
-    
-
-
 #### learn and show where in the world HIV is most common
 
 hiv_worldwide <- merge_hiv_df %>%
@@ -107,7 +109,7 @@ hiv_worldwide <- merge_hiv_df %>%
 #### Paragraph :
 #### Our Data shows that Central and Western Europe have the
 #### highest number of people living with HIV. Our data
-#### reports that 2,200,000 people are living with HIV
+#### reports that 2,200,000 people are living with HIV.
 
 
 #### Where in the world is HAART therapy most accessible?
@@ -116,11 +118,14 @@ hiv_worldwide <- hiv_df2_noNA %>%
   filter(Region == max(Region))%>%
   select(Year, Region, `Percent of People all ages living with HIV receiving ART`)
 
-#### Pargaph :
+#### Paragraph :
 #### Where in the world is HAART therapy most accessible?
 #### HAART Therapy is found is mainly found in North America..
 #### The code displays a list of countries sand regions where there are more than
 #### In 2018, 79% percent of people living with HIV were receivng  ART therapy.
+
+#### Our chart indicates that Adults are  
+####  receiving Hart therapy, and child ages 0-14. 
 
 
 ####  Who is receiving HAART therapy? (Bar Graph)
@@ -134,17 +139,15 @@ hiv_worldwide <- merge_hiv_df %>%
 ####  People of all ages are receiving HAART therapy.
 ####  Our data reports that both children and adults are receiving ART
 ####  Therapy. Adults rank higher than children in receiving the therapy
-####  with 22,394,000 cases
-
+####  with 22,394,000 cases.
 
 
 #### Who is not receiving ART therapy?
 
 hiv_worldwide <- hiv_df2_noNA %>%
-  filter( Region < 500) %>%
+  
   select(Year, Region, `Number of adults (15+) receiving ART`, `Number of children (0-14) receiving ART`)%>%
   filter( Region == min(Region)
-          
           
           
 #### Paragrpah:
@@ -178,7 +181,6 @@ ncol(merge_hiv_df)
 
 summary(merge_hiv_df)
 
-
 #### Explain why the grouping calculation was performed:
 
 #### The dataframe "merge_hiv_df" came from two different data set.
@@ -189,18 +191,18 @@ summary(merge_hiv_df)
 
 ####  Creates a summarized data frame to include as the table using `group_by()
 
-year <- merge_hiv_df %>% 
+max_mother_haart <- merge_hiv_df %>% 
   group_by(Year) %>% 
-  summarize(Total death = max(Total death)) %>% 
-  select(Total death)
+  mutate(Total_death == as.numeric(`Mothers Needing Antiretrovirals`) ) %>%
+  summarize(Total_death = max(`Mothers Needing Antiretrovirals`)) 
 
 #### Intentionally sorts the table in a relevant way:
 
-merge_hiv_df <- arrange(merge_hiv_df, desc(Total death))
+merge_hiv_df <- arrange(merge_hiv_df, desc(Total_death))
 
 #### Displays well formatted column names (**1 point**)
 
-names(merge_hiv_df)[13] <- "Total death"
+names(merge_hiv_df)[13] <- "Total_death"
 names(merge_hiv_df)[1] <- "Year"
 
 #### Only displays relevant columns in the table
@@ -208,9 +210,8 @@ names(merge_hiv_df)[1] <- "Year"
 #### Dataframe Consist of:
 #### year, region, demographics, age, and total AIDS death
 
-relevant_info_df <- select(
-  merge_hiv_df, Year:Total death,
-  -Location)
+relevant_info_df <- merge_hiv_df %>%
+  select(Year:Total_death, -Location)
 
 #### Renders the table in the report using an appropriate package 
 
@@ -224,32 +225,37 @@ renderTable(expr, striped = FALSE, hover = FALSE, bordered = FALSE,
 
 #### Interprets information the table, honing in on important information
 
-
 ## Charts (Khayla & Aniruddh)
 
 #### Question 1: Where in the world is HAART therapy most accessible?
-#### (Interactive Map Chart)
-lat_and_long.df <- data.frame(name, lat, long)
+#### (Scatter Plot)
 
-lat <- c("26.5225", "18.7669", "22.9576", "1.9403", "19.0154", 
-         "30.5852", "16.5388","56.2639", "41.8719", "39.3999", "40.4637")
-long <- c("31.4659", "46.8691", "18.4904","29.8739", "29.1549", 
-          "36.2384", "23.0418", "9.5018", "12.5674", "8.2245", "3.7492")
-lat_and_long <- lat_and_long.df %>%
-  mutate(total = lat_and_long$long + lat_and_long$lat)
+x <- receiving$Region
+y<- receiving$`Percent of people receiving ART`
 
-map <- leaflet() %>%
-  addTiles() %>%
-  addCircleMarkers(
-    lng = lat_and_long$long, lat = lat_and_long$lat, radius = lat_and_long$total,
-    label = lapply(details, htmltools::HTML)
+most_accessible <- ggplot(data = receiving) +
+  geom_point(mapping = aes(x = receiving$Region, y = receiving$`Percent of people receiving ART`)) +
+  geom_smooth (
+    mapping = aes(x = receiving$Region, y = receiving$`Percent of people receiving ART`),
   )
+print(most_accessible + labs(title = "Where HAART therapy is most accessible",
+                             x = "Region", y = "People Receiving") )
+
+#### The chart above represents how HAART is accessible to different
+#### regions of the world, in 2018. This type of chart is 
+#### especially useful when you want to demonstrate several
+#### trends or numbers. Our chart indicates that Spain and Jordan have
+####  the percentage of people receiving HAART 
+####  Italy, Namibia have the highest percentage of people.
+####  receiving HAART. Spain has the lowest percentage
+####  Our chart shows that spain has 84 percent
+#### receiving Art, while Nambia has 92 % 
 
 #### Question 2: Who is receiving HAART therapy? 
 #### (Bar plot) 
   
 names(hiv_df2_noNA)[4] <- "Percent of people receiving ART"
-receiving_df <- hiv_df2_noNA %>%
+receiving <- hiv_df2_noNA %>%
   filter(Year == "2018") %>%
   select(Year, Region, `Percent of people receiving ART`) %>%
   top_n(10)
@@ -259,9 +265,12 @@ num <- c(86, 9, 92, 87, 88, 84, 89, 89, 91, 90, 84)
 
 receiving_therapy <- barplot(
   num, names.arg = name,xlab = "Region", ylab = "People receiving HAART therapy", 
-  col = "blue", main = "Percent of people Receiving Art")
+  col = "blue", main = "Percent of people Receiving HAART")
 
-
+#### The chart above represents the percent of people who are receiving the 
+#### HAART therapy. Bar charts are useful to show a distribution of data points
+#### or perform a comparison of metric values across different subgroups of your
+#### data.
 
 #### Question 3: What demographics around the world are not benefiting from HAART therapy? 
 #### (Pie Chart)
@@ -281,24 +290,10 @@ legend("topleft", c("Middle East and North Africa", "Gambia",
                     "Honduras", "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan"), cex = 0.8,
        fill = rainbow(length(num_1)))
 
-#### The bar graph that I created shows a percentage of who receiving HAART therapy
-#### based on the region. This bar graph takes the top 10 percent
+#### The chart above represents a few regions that are not getting access of HAART
+#### and thus not benefiting from it. Pie charts are especially useful to show
+#### propotional data that is represented by each category that is provided to
+#### the legend in top left.
 
 
 
-## Code and Report structure (Maxine & Stassney)
-Code is broken up appropriately into the described files.
-- Each file is in the appropriate folder: `scripts/`, except `index.Rmd`, which is in the root (**1 point**)
-- Each file is loaded into the `index.Rmd` file (**1 point**)
-- Only the `index.Rmd` file loads the data (**1 point**)
-
-
-## Code clarity (Khayla & Aniruddh)
-
-#### Use "lintr" package to help remove lintr() errors.
-
-install.packages("lintr")
-
-#### Load "lintr" packages
-
-library(lintr)
