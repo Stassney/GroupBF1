@@ -193,7 +193,8 @@ num <- c(86, 9, 92, 87, 88, 84, 89, 89, 91, 90, 84)
 
 receiving_therapy <- barplot(num, names.arg = name,xlab = "Region", ylab = "People receiving HAART therapy", col = "blue", main = "Percent of people Receiving Art")
 
-#### Insert paragraph
+#### The bar graph that I created shows a percentage of who receiving HAART therapy
+#### based on the region. This bar graph takes the top 10 percent
 
 # What demographics around the world are not benefiting from HAART therapy? (Pie Chart)
 
