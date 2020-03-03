@@ -178,7 +178,8 @@ For each chart, you will be evaluated based on the following (remember, each cha
 # Where in the world is HAART therapy most accessible? (Interactive Map Chart)
 
   
-
+#### Insert paragraph
+  
 # Who is receiving HAART therapy? (Bar plot) 
 
 names(hiv_df2_noNA)[4] <- "Percent of people receiving ART"
@@ -192,6 +193,7 @@ num <- c(86, 9, 92, 87, 88, 84, 89, 89, 91, 90, 84)
 
 receiving_therapy <- barplot(num, names.arg = name,xlab = "Region", ylab = "People receiving HAART therapy", col = "blue", main = "Percent of people Receiving Art")
 
+#### Insert paragraph
 
 # What demographics around the world are not benefiting from HAART therapy? (Pie Chart)
 
@@ -207,15 +209,7 @@ num_1 <- c(8400, 980,780, 710, 7800, 910, 720, 710, 9900)
 demographics_therapy <- pie(num_1, labels = num_1 , main = "Demographics not benefiting from therapy", col = rainbow(length(num_1) ) )
 legend("topleft", c("Middle East and North Africa",  "Gambia", " Honduras", "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan"), cex = 0.8,
                      fill = rainbow(length(num_1) ) )
-
-- A description of what the chart attempts to answer/understand (**1 point**)
-- Selected the appropriate chart type / graphical encoding based on the question of interest and the data type(s) of the features (**3 point**)
-- Appropriate labels/legends, depending on your chart type (**4 points**). Including, but not limited to:
-    - X axis label (if there's an x axis)
-- Y axis label (if there's an y axis)
-    - Title (if there's an ability to add a title -- e.g., not a map)
-- Legend for any encodings that are not immediately apparent
-- Interprets information from the chart, honing in on important information (**2 points**)
+#### Insert Paragraph
 
 
 ## Code and Report structure (Maxine & Stassney)
