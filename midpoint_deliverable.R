@@ -97,12 +97,66 @@ merge_hiv_df[merge_hiv_df == "..."] <- NA
   
     
 
-#- Compute the information accurately in the script (**1 point**)
+
+#### learn and show where in the world HIV is most common
+
+hiv_worldwide <- merge_hiv_df %>%
+  filter(Region == max(Region)) %>%
+  select(Region,"Estimated adults (15+) living with HIV")
+
+#### Paragraph :
+#### Our Data shows that Central and Western Europe have the
+#### highest number of people living with HIV. Our data
+#### reports that 2,200,000 people are living with HIV
 
 
-#- Include the piece of information using in-line R code in the paragraph (**1 point**)
+#### Where in the world is HAART therapy most accessible?
 
-#- Make clear the relevance of including the information (if not apparent) (**1 point**)
+hiv_worldwide <- hiv_df2_noNA %>%
+  filter(Region == max(Region))%>%
+  select(Year, Region, `Percent of People all ages living with HIV receiving ART`)
+
+#### Pargaph :
+#### Where in the world is HAART therapy most accessible?
+#### HAART Therapy is found is mainly found in North America..
+#### The code displays a list of countries sand regions where there are more than
+#### In 2018, 79% percent of people living with HIV were receivng  ART therapy.
+
+
+####  Who is receiving HAART therapy? (Bar Graph)
+
+hiv_worldwide <- merge_hiv_df %>%
+  filter( Year == max(Year)) %>%
+  select( 'Number of adults (15+) receiving ART', `Number of children (0-14) receiving ART`) %>%
+  filter( `Number of children (0-14) receiving ART` == max(`Number of children (0-14) receiving ART`))
+
+#### Paragraph:
+####  People of all ages are receiving HAART therapy.
+####  Our data reports that both children and adults are receiving ART
+####  Therapy. Adults rank higher than children in receiving the therapy
+####  with 22,394,000 cases
+
+
+
+#### Who is not receiving ART therapy?
+
+hiv_worldwide <- hiv_df2_noNA %>%
+  filter( Region < 500) %>%
+  select(Year, Region, `Number of adults (15+) receiving ART`, `Number of children (0-14) receiving ART`)%>%
+  filter( Region == min(Region)
+          
+          
+          
+#### Paragrpah:
+#### Who is not receiving ART therapy?
+#### Our dataset displays that there are zero
+#### reported cases of children receiving HAART therapy in Afghanistan.
+#### Relationship between prevelance of HIV and people receiving ART
+
+hiv_worldwide <- merge_hiv_df %>%
+            filter(Region == max(Region))%>%
+            select( Region , 'Number of adults (15+) receiving ART', `Adult (15-49) prevalence (%)`)
+          
 
 
 ## Summary Table (Stassney)
@@ -175,18 +229,25 @@ renderTable(expr, striped = FALSE, hover = FALSE, bordered = FALSE,
 
 #### Question 1: Where in the world is HAART therapy most accessible?
 #### (Interactive Map Chart)
+lat_and_long.df <- data.frame(name, lat, long)
 
-<<<<<<< HEAD
+lat <- c("26.5225", "18.7669", "22.9576", "1.9403", "19.0154", 
+         "30.5852", "16.5388","56.2639", "41.8719", "39.3999", "40.4637")
+long <- c("31.4659", "46.8691", "18.4904","29.8739", "29.1549", 
+          "36.2384", "23.0418", "9.5018", "12.5674", "8.2245", "3.7492")
+lat_and_long <- lat_and_long.df %>%
+  mutate(total = lat_and_long$long + lat_and_long$lat)
+
+map <- leaflet() %>%
+  addTiles() %>%
+  addCircleMarkers(
+    lng = lat_and_long$long, lat = lat_and_long$lat, radius = lat_and_long$total,
+    label = lapply(details, htmltools::HTML)
+  )
 
 #### Question 2: Who is receiving HAART therapy? 
 #### (Bar plot) 
-=======
   
-#### Insert paragraph
-  
-# Who is receiving HAART therapy? (Bar plot) 
->>>>>>> 3d1724057805853f6dac57540b72a2ad7accd731
-
 names(hiv_df2_noNA)[4] <- "Percent of people receiving ART"
 receiving_df <- hiv_df2_noNA %>%
   filter(Year == "2018") %>%
@@ -201,38 +262,28 @@ receiving_therapy <- barplot(
   col = "blue", main = "Percent of people Receiving Art")
 
 
-<<<<<<< HEAD
+
 #### Question 3: What demographics around the world are not benefiting from HAART therapy? 
 #### (Pie Chart)
-=======
-#### The bar graph that I created shows a percentage of who receiving HAART therapy
-#### based on the region. This bar graph takes the top 10 percent
-
-# What demographics around the world are not benefiting from HAART therapy? (Pie Chart)
->>>>>>> 3d1724057805853f6dac57540b72a2ad7accd731
 
 names(merge_hiv_df)[13] <- "Total death"
 not_benefiting <- merge_hiv_df %>%
   filter(Year == "2018") %>%
   select(Year, Region, `Total death`) %>%
   top_n(10)
-
 name_1 <- c("Middle East and North Africa",  "Gambia", "Honduras", 
             "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan")
 num_1 <- c(8400, 980,780, 710, 7800, 910, 720, 710, 9900)
 
-<<<<<<< HEAD
 demographics_therapy <- pie(num_1, labels = num_1 , main = "Demographics not benefiting from therapy", 
                             col = rainbow(length(num_1)))
 legend("topleft", c("Middle East and North Africa", "Gambia", 
                     "Honduras", "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan"), cex = 0.8,
-                     fill = rainbow(length(num_1)))
-=======
-demographics_therapy <- pie(num_1, labels = num_1 , main = "Demographics not benefiting from therapy", col = rainbow(length(num_1) ) )
-legend("topleft", c("Middle East and North Africa",  "Gambia", " Honduras", "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan"), cex = 0.8,
-                     fill = rainbow(length(num_1) ) )
-#### Insert Paragraph
->>>>>>> 3d1724057805853f6dac57540b72a2ad7accd731
+       fill = rainbow(length(num_1)))
+
+#### The bar graph that I created shows a percentage of who receiving HAART therapy
+#### based on the region. This bar graph takes the top 10 percent
+
 
 
 ## Code and Report structure (Maxine & Stassney)
