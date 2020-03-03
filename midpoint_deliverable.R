@@ -137,16 +137,16 @@ summary(merge_hiv_df)
 
 year <- merge_hiv_df %>% 
   group_by(Year) %>% 
-  summarize(Total AIDS Death = max(Total AIDS Death)) %>% 
-  select(Total AIDS Death)
+  summarize(Total death = max(Total death)) %>% 
+  select(Total death)
 
 #### Intentionally sorts the table in a relevant way:
 
-merge_hiv_df <- arrange(merge_hiv_df, desc(aids_death))
+merge_hiv_df <- arrange(merge_hiv_df, desc(Total death))
 
 #### Displays well formatted column names (**1 point**)
 
-names(merge_hiv_df)[13] <- "Aids_death"
+names(merge_hiv_df)[13] <- "Total death"
 names(merge_hiv_df)[1] <- "Year"
 
 #### Only displays relevant columns in the table
@@ -155,7 +155,7 @@ names(merge_hiv_df)[1] <- "Year"
 #### year, region, demographics, age, and total AIDS death
 
 relevant_info_df <- select(
-  merge_hiv_df, Year:Aids_death,
+  merge_hiv_df, Year:Total death,
   -Location)
 
 #### Renders the table in the report using an appropriate package 
@@ -170,34 +170,46 @@ renderTable(expr, striped = FALSE, hover = FALSE, bordered = FALSE,
 
 #### Interprets information the table, honing in on important information
 
-#### 
 
+## Charts (Khayla & Aniruddh)
 
-## Charts (**30 points**, 10 points each) (Khayla & An)
-For each chart, you will be evaluated based on the following (remember, each chart must be a **different chart type**):
+#### Question 1: Where in the world is HAART therapy most accessible?
+#### (Interactive Map Chart)
 
-# Where in the world is HAART therapy most accessible? (Interactive Map Chart)
+<<<<<<< HEAD
 
+#### Question 2: Who is receiving HAART therapy? 
+#### (Bar plot) 
+=======
   
 #### Insert paragraph
   
 # Who is receiving HAART therapy? (Bar plot) 
+>>>>>>> 3d1724057805853f6dac57540b72a2ad7accd731
 
 names(hiv_df2_noNA)[4] <- "Percent of people receiving ART"
 receiving_df <- hiv_df2_noNA %>%
   filter(Year == "2018") %>%
   select(Year, Region, `Percent of people receiving ART`) %>%
   top_n(10)
-name <- c("Eswatini", "Madagascar", "Namibia", " Rwanda", "Zimbabwe", " Jordan", "Cape Verde", "Denmark", "Italy", "Portugal", "Spain")
+name <- c("Eswatini", "Madagascar", "Namibia", " Rwanda","Zimbabwe", "Jordan",
+          "Cape Verde", "Denmark", "Italy", "Portugal", "Spain")
 num <- c(86, 9, 92, 87, 88, 84, 89, 89, 91, 90, 84)
 
+receiving_therapy <- barplot(
+  num, names.arg = name,xlab = "Region", ylab = "People receiving HAART therapy", 
+  col = "blue", main = "Percent of people Receiving Art")
 
-receiving_therapy <- barplot(num, names.arg = name,xlab = "Region", ylab = "People receiving HAART therapy", col = "blue", main = "Percent of people Receiving Art")
 
+<<<<<<< HEAD
+#### Question 3: What demographics around the world are not benefiting from HAART therapy? 
+#### (Pie Chart)
+=======
 #### The bar graph that I created shows a percentage of who receiving HAART therapy
 #### based on the region. This bar graph takes the top 10 percent
 
 # What demographics around the world are not benefiting from HAART therapy? (Pie Chart)
+>>>>>>> 3d1724057805853f6dac57540b72a2ad7accd731
 
 names(merge_hiv_df)[13] <- "Total death"
 not_benefiting <- merge_hiv_df %>%
@@ -205,13 +217,22 @@ not_benefiting <- merge_hiv_df %>%
   select(Year, Region, `Total death`) %>%
   top_n(10)
 
-name_1 <- c("Middle East and North Africa",  "Gambia", " Honduras", "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan")
+name_1 <- c("Middle East and North Africa",  "Gambia", "Honduras", 
+            "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan")
 num_1 <- c(8400, 980,780, 710, 7800, 910, 720, 710, 9900)
 
+<<<<<<< HEAD
+demographics_therapy <- pie(num_1, labels = num_1 , main = "Demographics not benefiting from therapy", 
+                            col = rainbow(length(num_1)))
+legend("topleft", c("Middle East and North Africa", "Gambia", 
+                    "Honduras", "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan"), cex = 0.8,
+                     fill = rainbow(length(num_1)))
+=======
 demographics_therapy <- pie(num_1, labels = num_1 , main = "Demographics not benefiting from therapy", col = rainbow(length(num_1) ) )
 legend("topleft", c("Middle East and North Africa",  "Gambia", " Honduras", "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan"), cex = 0.8,
                      fill = rainbow(length(num_1) ) )
 #### Insert Paragraph
+>>>>>>> 3d1724057805853f6dac57540b72a2ad7accd731
 
 
 ## Code and Report structure (Maxine & Stassney)
@@ -222,7 +243,6 @@ Code is broken up appropriately into the described files.
 
 
 ## Code clarity (Khayla & Aniruddh)
-## To earn full points, you must not have any `lintr()` errors.
 
 #### Use "lintr" package to help remove lintr() errors.
 
