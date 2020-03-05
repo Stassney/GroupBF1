@@ -71,7 +71,8 @@ hiv_df2_noNA <- hiv_df2[-c(20:50)]
 merge_hiv_df <- merge(x=hiv_df1, y=hiv_df2_noNA, by=c("Year","Location", "Region"))
 dim(data)
 
-#### Viewing merge_hiv_df
+
+#### Viewing the merged data frame
 
 View(merge_hiv_df)
 
@@ -93,12 +94,12 @@ colnames(merge_hiv_df)[40] <- "Mothers Needing Antiretrovirals"
 colnames(merge_hiv_df)[41] <- "Mothers Needing Antiretrovirals-LOW ESTIMATE"
 colnames(merge_hiv_df)[42] <- "Mothers Needing Antiretrovirals-HIGH ESTIMATE"
 
-View(merge_hiv_df)
 
 #### Making missing value "..." into "NA"
 
 merge_hiv_df[merge_hiv_df == "..."] <- NA
 
+<<<<<<< HEAD:midpoint/midpoint_deliverable.R
 #### 5 pieces of relevant information using a function saved in a `script/` file.
 #### For each piece of information, make sure to:
 
@@ -107,6 +108,10 @@ merge_hiv_df[merge_hiv_df == "..."] <- NA
 #### highest number of people living with HIV. Our data
 #### reports that 2,200,000 people are living with HIV
 
+=======
+####Computes (and includes) 5 pieces of _relevant_ information using a function saved 
+####in a `script/` file.For each piece of information, make sure to:
+>>>>>>> 66bf0d9ed6b9cb43d4330e74d15e2e18171457c1:midpoint_deliverable.R
 
 #### Learn and show where in the world HIV is most common
 
@@ -117,7 +122,7 @@ hiv_worldwide <- merge_hiv_df %>%
 #### Paragraph :
 #### Our Data shows that Central and Western Europe have the
 #### highest number of people living with HIV. Our data
-#### reports that 2,200,000 people are living with HIV
+#### reports that 2,200,000 people are living with HIV.
 
 
 #### Where in the world is HAART therapy most accessible?
@@ -126,14 +131,20 @@ hiv_worldwide <- hiv_df2_noNA %>%
   filter(Region == max(Region))%>%
   select(Year, Region, `Percent of People all ages living with HIV receiving ART`)
 
-#### Pargaph :
+#### Paragraph:
 #### Where in the world is HAART therapy most accessible?
 #### HAART Therapy is found is mainly found in North America..
 #### The code displays a list of countries sand regions where there are more than
 #### In 2018, 79% percent of people living with HIV were receivng  ART therapy.
+#### Our chart indicates that Adults are  
+####  receiving Hart therapy, and child ages 0-14. 
 
+<<<<<<< HEAD:midpoint/midpoint_deliverable.R
 
 #### Who is receiving HAART therapy? (Bar Graph)
+=======
+####  Who is receiving HAART therapy? 
+>>>>>>> 66bf0d9ed6b9cb43d4330e74d15e2e18171457c1:midpoint_deliverable.R
 
 hiv_worldwide <- merge_hiv_df %>%
   filter( Year == max(Year)) %>%
@@ -144,6 +155,7 @@ hiv_worldwide <- merge_hiv_df %>%
 ####  People of all ages are receiving HAART therapy.
 ####  Our data reports that both children and adults are receiving ART
 ####  Therapy. Adults rank higher than children in receiving the therapy
+<<<<<<< HEAD:midpoint/midpoint_deliverable.R
 ####  with 22,394,000 cases
 >>>>>>> 169db6ae1348f4803004d8cc15ae125277b3c219
 
@@ -191,6 +203,9 @@ hiv_worldwide <- hiv_df2_noNA %>%
 #### Our data reports that both children and adults are receiving ART
 #### Therapy. Adults rank higher than children in receiving the therapy
 #### with 22,394,000 cases 
+=======
+####  with 22,394,000 cases.
+>>>>>>> 66bf0d9ed6b9cb43d4330e74d15e2e18171457c1:midpoint_deliverable.R
 
 
 #### Who is not receiving ART therapy?
@@ -203,7 +218,13 @@ hiv_worldwide <- hiv_df2_noNA %>%
 #### Paragraph:
 #### Our dataset displays that there are zero
 #### reported cases of children receiving HAART therapy in Afghanistan. 
-        
+
+#### Relationship between prevelance of HIV and people receiving ART
+  
+hiv_worldwide <- merge_hiv_df %>%
+    filter(Region == max(Region))%>%
+    select( Region , 'Number of adults (15+) receiving ART', `Adult (15-49) prevalence (%)`)
+  
 
 ## Summary Table (Stassney)
 
@@ -236,8 +257,8 @@ summary(merge_hiv_df)
 
 max_mother_haart <- merge_hiv_df %>% 
   group_by(Year) %>% 
-  mutate(Total_death == as.numeric(`Mothers Needing Antiretrovirals`)) %>% 
-  summarize(Total_death = max(`Mothers Needing Antiretrovirals`))
+  mutate(Total_death == as.numeric(`Mothers Needing Antiretrovirals`) ) %>%
+  summarize(Total_death = max(`Mothers Needing Antiretrovirals`)) 
 
 #### Intentionally sorts the table in a relevant way:
 
@@ -265,10 +286,10 @@ renderTable(expr, striped = FALSE, hover = FALSE, bordered = FALSE,
 
 #### Interprets information the table, honing in on important information
 
-
 ## Charts (Khayla & Aniruddh)
 
 #### Question 1: Where in the world is HAART therapy most accessible?
+<<<<<<< HEAD:midpoint/midpoint_deliverable.R
 #### (Interactive Map Chart)
 #### Insert paragraph
 
@@ -297,6 +318,33 @@ map <- leaflet() %>%
 names(hiv_df2_noNA)[4] <- "Percent of people receiving ART"
 
 receiving_df <- hiv_df2_noNA %>%
+=======
+#### (Scatter Plot)
+
+x <- receiving$Region
+y<- receiving$`Percent of people receiving ART`
+
+most_accessible <- ggplot(data = receiving) +
+  geom_point(mapping = aes(x = receiving$Region, y = receiving$`Percent of people receiving ART`)) +
+  geom_smooth (
+    mapping = aes(x = receiving$Region, y = receiving$`Percent of people receiving ART`),
+
+#### The chart above represents how HAART is accessible to different
+#### regions of the world, in 2018. This type of chart is 
+#### especially useful when you want to demonstrate several
+#### trends or numbers. Our chart indicates that Spain and Jordan have
+####  the percentage of people receiving HAART 
+####  Italy, Namibia have the highest percentage of people.
+####  receiving HAART. Spain has the lowest percentage
+####  Our chart shows that spain has 84 percent
+#### receiving Art, while Nambia has 92 %. 
+
+#### Question 2: Who is receiving HAART therapy? 
+#### (Bar plot) 
+
+names(hiv_df2_noNA)[4] <- "Percent of people receiving ART"
+receiving <- hiv_df2_noNA %>%
+>>>>>>> 66bf0d9ed6b9cb43d4330e74d15e2e18171457c1:midpoint_deliverable.R
   filter(Year == "2018") %>%
   select(Year, Region, `Percent of people receiving ART`) %>%
   top_n(10)
@@ -307,6 +355,7 @@ num <- c(86, 9, 92, 87, 88, 84, 89, 89, 91, 90, 84)
 
 receiving_therapy <- barplot(
   num, names.arg = name,xlab = "Region", ylab = "People receiving HAART therapy", 
+<<<<<<< HEAD:midpoint/midpoint_deliverable.R
   col = "blue", main = "Percent of people Receiving Art")
 
 #### The bar graph that I created shows a percentage of who receiving HAART therapy
@@ -314,11 +363,22 @@ receiving_therapy <- barplot(
 
 #### What demographics around the world are not benefiting from HAART therapy? 
 ####(Pie Chart)
+=======
+  col = "blue", main = "Percent of people Receiving HAART")
+
+#### The chart above represents the percent of people who are receiving the 
+#### HAART therapy. Bar charts are useful to show a distribution of data points
+#### or perform a comparison of metric values across different subgroups of your
+#### data.
+>>>>>>> 66bf0d9ed6b9cb43d4330e74d15e2e18171457c1:midpoint_deliverable.R
 
 #### Question 3: What demographics around the world are not benefiting from HAART therapy? 
 #### (Pie Chart)
 
+<<<<<<< HEAD:midpoint/midpoint_deliverable.R
 names(merge_hiv_df)[13] <- "Total_death"
+=======
+>>>>>>> 66bf0d9ed6b9cb43d4330e74d15e2e18171457c1:midpoint_deliverable.R
 not_benefiting <- merge_hiv_df %>%
   filter(Year == "2018") %>%
   select(Year, Region, `Total_death`) %>%
@@ -327,6 +387,7 @@ name_1 <- c("Middle East and North Africa",  "Gambia", "Honduras",
             "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan")
 num_1 <- c(8400, 980,780, 710, 7800, 910, 720, 710, 9900)
 
+<<<<<<< HEAD:midpoint/midpoint_deliverable.R
 HEADdemographics_therapy <- pie(num_1, labels = num_1 , main = "Demographics not benefiting from therapy", 
                             col = rainbow(length(num_1))
 legend("topleft", c("Middle East and North Africa", "Gambia", 
@@ -337,6 +398,18 @@ demographics_therapy <- pie(num_1, labels = num_1 , main = "Demographics not ben
 legend("topleft", c("Middle East and North Africa",  "Gambia", " Honduras", "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan"), cex = 0.8,
                      fill = rainbow(length(num_1))
 #### Insert Paragraph
+=======
+demographics_therapy <- pie(num_1, labels = num_1 , main = "Demographics not benefiting from therapy", 
+                            col = rainbow(length(num_1)))
+legend("topleft", c("Middle East and North Africa", "Gambia", 
+                    "Honduras", "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan"), cex = 0.8,
+       fill = rainbow(length(num_1)))
+
+#### The chart above represents a few regions that are not getting access of HAART
+#### and thus not benefiting from it. Pie charts are especially useful to show
+#### propotional data that is represented by each category that is provided to
+#### the legend in top left.
+>>>>>>> 66bf0d9ed6b9cb43d4330e74d15e2e18171457c1:midpoint_deliverable.R
 
 
 
