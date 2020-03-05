@@ -18,7 +18,7 @@ Includes an introductory paragraph describing:
 ## On each page, Visualization is worth 14 points, and Controls are worth 8:
 
 Khayla
-Chart #1:
+Chart #1: Pie Chart
 
 **Visualization**
   - A description of what the chart attempts to answer/understand (**2 point**)
@@ -37,7 +37,7 @@ Chart #1:
 - 2 points for appropriate layout of controls and visualization (e.g., a `sidebarLayout()`)
 
 Aniruddh
-Chart #2: 
+Chart #2: Scatter Plot
 
 **Visualization**
 - A description of what the chart attempts to answer/understand (**2 point**)
@@ -56,7 +56,7 @@ Chart #2:
 - 2 points for appropriate layout of controls and visualization (e.g., a `sidebarLayout()`)
 
 Maxine & Stassney
-Chart #3: 
+Chart #3: Bar Graph
 
 **Visualization**
   - A description of what the chart attempts to answer/understand (**2 point**)
