@@ -1,0 +1,29 @@
+---
+title: "HIV Global Data"
+author: "Maxine O. Addo-Kufuor, Aniruddh Ashok Vardhan, Khayla Rooks, and Stassney Obregon"
+date: "3/2/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+
+``` 
+
+## Introduction Paragraph
+
+## Summary Information
+
+## Summary Table
+
+
+## Charts
+```{r most_accessible, echo = FALSE}
+print(most_accessible + labs(title = "Where HAART therapy is most accessible",
+                   y = "Region", x = "People Receiving))
+
+```
+
+## Clarity
+
