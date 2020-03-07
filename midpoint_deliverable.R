@@ -139,6 +139,13 @@ map <- leaflet() %>%
     label = lapply(details, htmltools::HTML)
 
 # Who is receiving HAART therapy? (Bar Graph) data 2
+
+receiving <- merge_hiv_df %>%
+  filter(Year == "2018") %>%
+  mutate(people_recieving_HAART) %>%
+  summarise(sum(Number_of_children_(0-14),receiving_ART + Number_of_peple_all_ages_receiving_ART))
+
+
 bargraph <- data.frame()
 receiving <-ggplot(hiv_df2, aes(, ))
 librareceiving +geom_bar(stat = "identity")
