@@ -7,7 +7,7 @@ Khayla
 - At least 5 custom CSS styles are applied throughout the project (**5 points**, 1 point each)
 - Host the project on ShinyApps.io (**2 points**)
 
-Aniruddh
+Stassney
 ## Introductory page (**5 points**)
 Includes an introductory paragraph describing:
   - The purpose/importance of the project (**2 points**)
@@ -55,7 +55,7 @@ Chart #2: Scatter Plot
 - 4 points for the widget working (e.g., changing the desired output)
 - 2 points for appropriate layout of controls and visualization (e.g., a `sidebarLayout()`)
 
-Maxine & Stassney
+Aniruddh
 Chart #3: Bar Graph
 
 **Visualization**
@@ -74,7 +74,7 @@ Chart #3: Bar Graph
 - 4 points for the widget working (e.g., changing the desired output)
 - 2 points for appropriate layout of controls and visualization (e.g., a `sidebarLayout()`)
 
-Maxine
+Stassney
 ## Conclusion Page (**21 points**, 7 points each)
 For each major takeaway, you should include the following:
 - A description of the notable data-insight or pattern discovered in your project (**2 points**)
@@ -89,7 +89,7 @@ Stassney
 - Comments are used throughout to express purpose of each section (**1 point**)
 - Clear files names and variable/function names are used throughout the project (**2 points**)
 
-Aniruddh
+Stassney
 ## Code clarity (**5 points**)
 To earn full points, you must not have any `lintr()` errors. 
 - -1 point for 1 - 2 `lintr` errors
