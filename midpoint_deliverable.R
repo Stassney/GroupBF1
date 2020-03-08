@@ -34,6 +34,11 @@ library(styler)
 "http://apps.who.int/gho/data/node.home"
 
 
+## Summary Information (**15 points**) (Maxine)
+
+#### Dataframe number 1
+
+
 ## Summary Information (Maxine)
 
 #### Dataframe number 1
@@ -63,6 +68,7 @@ dim(hiv_df2)
 intersect(colnames(hiv_df1),colnames(hiv_df2))
 
 #### hiv_df2 dataframe without NA columns
+<<<<<<< HEAD
 
 hiv_df2_noNA <- hiv_df2[-c(20:50)]
 
@@ -73,6 +79,15 @@ dim(data)
 
 
 #### Viewing the merged data frame
+=======
+
+hiv_df2_noNA <- hiv_df2[-c(20:50)]
+
+## Merging both data frames together
+
+merge_hiv_df <- merge(x=hiv_df1, y=hiv_df2_noNA, by=c("Year","Location", "Region"))
+dim(data)
+>>>>>>> f10f626c5047fcbe4057bcc57ab003503aca8ed4
 
 View(merge_hiv_df)
 
@@ -95,6 +110,7 @@ colnames(merge_hiv_df)[41] <- "Mothers Needing Antiretrovirals-LOW ESTIMATE"
 colnames(merge_hiv_df)[42] <- "Mothers Needing Antiretrovirals-HIGH ESTIMATE"
 
 
+<<<<<<< HEAD
 #### Making missing value "..." into "NA"
 
 merge_hiv_df[merge_hiv_df == "..."] <- NA
@@ -112,6 +128,17 @@ hiv_worldwide <- merge_hiv_df %>%
 #### Our Data shows that Central and Western Europe have the
 #### highest number of people living with HIV. Our data
 #### reports that 2,200,000 people are living with HIV.
+=======
+# Making missing value "..." into "NA"
+
+merge_hiv_df[merge_hiv_df == "..."] <- NA
+
+
+Computes (and includes) 5 pieces of _relevant_ information using a function saved in a `script/` file. For each piece of information, make sure to:
+    
+  
+- Compute the information accurately in the script (**1 point**)
+>>>>>>> f10f626c5047fcbe4057bcc57ab003503aca8ed4
 
 
 #### Where in the world is HAART therapy most accessible?
@@ -141,7 +168,13 @@ hiv_worldwide <- merge_hiv_df %>%
 ####  Therapy. Adults rank higher than children in receiving the therapy
 ####  with 22,394,000 cases.
 
+<<<<<<< HEAD
 #### Who is not receiving ART therapy?
+=======
+#### 
+
+- Intentionally sorts the table in a relevant way (**1 point**)
+>>>>>>> f10f626c5047fcbe4057bcc57ab003503aca8ed4
 
 hiv_worldwide <- hiv_df2_noNA %>%
   filter( Region < 500) %>%
@@ -165,7 +198,22 @@ hiv_worldwide <- merge_hiv_df %>%
 #### Introducing  the table:
 #### Total number of rows in "merge_hiv_df"
 
+<<<<<<< HEAD
 nrow(merge_hiv_df)
+=======
+# Who is receiving HAART therapy? (Bar Graph) data 2
+
+receiving <- merge_hiv_df %>%
+  filter(Year == "2018") %>%
+  mutate(people_recieving_HAART) %>%
+  summarise(sum(Number_of_children_(0-14),receiving_ART + Number_of_peple_all_ages_receiving_ART))
+
+
+bargraph <- data.frame()
+receiving <-ggplot(hiv_df2, aes(, ))
+librareceiving +geom_bar(stat = "identity")
+View(receiving)
+>>>>>>> f10f626c5047fcbe4057bcc57ab003503aca8ed4
 
 #### There are 1661 total rows
 
@@ -181,6 +229,7 @@ summary(merge_hiv_df)
 
 #### Explain why the grouping calculation was performed:
 
+<<<<<<< HEAD
 #### The dataframe "merge_hiv_df" came from two different data set.
 #### The first data.cvs file was named under "hiv_df1" and 
 #### the second data.csv file was named under "hiv_df2".
@@ -289,3 +338,7 @@ most_accessible <- ggplot(data = receiving) +
     #### the legend in top left.
     
     
+=======
+## Code clarity (**5 points**) (Khayla & Anura)
+To earn full points, you must not have any `lintr()` errors.
+>>>>>>> f10f626c5047fcbe4057bcc57ab003503aca8ed4
