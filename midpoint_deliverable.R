@@ -234,7 +234,7 @@ most_accessible <- ggplot(data = receiving) +
   geom_point(mapping = aes(x = receiving$Region, y = receiving$`Percent of people receiving ART`)) +
   geom_smooth (
     mapping = aes(x = receiving$Region, y = receiving$`Percent of people receiving ART`),
-
+    
 #### The chart above represents how HAART is accessible to different
 #### regions of the world, in 2018. This type of chart is 
 #### especially useful when you want to demonstrate several
