@@ -19,7 +19,7 @@ library(knitr)
 #### - to understand how the distribution of HIV treatment (HAART therapy) affects 
 ####   the prevalence of HIV in certain parts of the world.
 ####     - Questions such as:
-####       - Where in the world is HAART therapy most accessible? (Scatter Chart)
+####       - Where in the world is HAART therapy most accessible? (Interactive Map Chart)
 ####       - Who is receiving HAART therapy? (Bar Graph)
 ####       - What demographics around the world are not benefiting from HAART therapy? (Pie Chart)
 ####       - How accessibility to HAART therapy affects the prevalence of HIV in certain parts of the world?
@@ -33,6 +33,7 @@ library(knitr)
 #### UNAIDS 2019 HIV estimates treatments
 
 "http://apps.who.int/gho/data/node.home"
+
 
 
 ## Summary Information (Maxine)
@@ -73,6 +74,7 @@ merge_hiv_df <- merge(x=hiv_df1, y=hiv_df2_noNA, by=c("Year","Location", "Region
 dim(data)
 
 
+
 #### Viewing the merged data frame
 
 View(merge_hiv_df)
@@ -109,11 +111,11 @@ hiv_worldwide <- merge_hiv_df %>%
   filter(Region == max(Region)) %>%
   select(Region,"Estimated adults (15+) living with HIV")
 
-#### Paragraph :
+#### Paragraph:
+
 #### Our Data shows that Central and Western Europe have the
 #### highest number of people living with HIV. Our data
 #### reports that 2,200,000 people are living with HIV.
-
 
 #### Where in the world is HAART therapy most accessible?
 
@@ -122,6 +124,7 @@ hiv_worldwide <- hiv_df2_noNA %>%
   select(Year, Region, `Percent of People all ages living with HIV receiving ART`)
 
 #### Paragraph:
+
 #### Where in the world is HAART therapy most accessible?
 #### HAART Therapy is found is mainly found in North America..
 #### The code displays a list of countries sand regions where there are more than
@@ -137,6 +140,7 @@ hiv_worldwide <- merge_hiv_df %>%
   filter( `Number of children (0-14) receiving ART` == max(`Number of children (0-14) receiving ART`))
 
 #### Paragraph:
+
 ####  People of all ages are receiving HAART therapy.
 ####  Our data reports that both children and adults are receiving ART
 ####  Therapy. Adults rank higher than children in receiving the therapy
@@ -148,8 +152,8 @@ hiv_worldwide <- hiv_df2_noNA %>%
   filter('Number of people all ages receiving ART' == min('Number of people all ages receiving ART')) %>%
   select(Year, Region, `Number of adults (15+) receiving ART`, `Number of children (0-14) receiving ART`)
 
-
 #### Paragraph:
+
 #### Our dataset displays that there are zero
 #### reported cases of children receiving HAART therapy in Afghanistan. 
 
@@ -158,6 +162,7 @@ hiv_worldwide <- hiv_df2_noNA %>%
 hiv_worldwide <- merge_hiv_df %>%
   filter(Region == max(Region))%>%
   select( Region , 'Number of adults (15+) receiving ART', `Adult (15-49) prevalence (%)`)
+
 
 
 ## Summary Table (Stassney)
@@ -222,6 +227,8 @@ renderTable(expr, striped = FALSE, hover = FALSE, bordered = FALSE,
 
 #### Interprets information the table, honing in on important information
 
+
+
 ## Charts (Khayla & Aniruddh)
 
 #### Question 1: Where in the world is HAART therapy most accessible?
@@ -234,16 +241,16 @@ most_accessible <- ggplot(data = receiving) +
   geom_point(mapping = aes(x = receiving$Region, y = receiving$`Percent of people receiving ART`)) +
   geom_smooth (
     mapping = aes(x = receiving$Region, y = receiving$`Percent of people receiving ART`),
-)
+  )
 
 #### The chart above represents how HAART is accessible to different
 #### regions of the world, in 2018. This type of chart is 
 #### especially useful when you want to demonstrate several
 #### trends or numbers. Our chart indicates that Spain and Jordan have
-####  the percentage of people receiving HAART 
-####  Italy, Namibia have the highest percentage of people.
-####  receiving HAART. Spain has the lowest percentage
-####  Our chart shows that spain has 84 percent
+#### the percentage of people receiving HAART 
+#### Italy, Namibia have the highest percentage of people.
+#### receiving HAART. Spain has the lowest percentage
+#### Our chart shows that spain has 84 percent
 #### receiving Art, while Nambia has 92 %. 
     
 #### Question 2: Who is receiving HAART therapy? 
@@ -254,7 +261,7 @@ most_accessible <- ggplot(data = receiving) +
       filter(Year == "2018") %>%
       select(Year, Region, `Percent of people receiving ART`) %>%
       top_n(10)
-    name <- c("Eswatini", "Madagascar", "Namibia", " Rwanda","Zimbabwe", "Jordan",
+    name <- c("Eswatini", "Madagascar", "Namibia", " Rwanda", "Zimbabwe", "Jordan",
               "Cape Verde", "Denmark", "Italy", "Portugal", "Spain")
     num <- c(86, 9, 92, 87, 88, 84, 89, 89, 91, 90, 84)
     
@@ -263,11 +270,11 @@ most_accessible <- ggplot(data = receiving) +
       col = "blue", main = "Percent of people Receiving HAART")
     
 #### The chart above represents the percent of people who are receiving the 
-#### HAART therapy. Bar charts are useful to show a distribution of data points
-#### or perform a comparison of metric values across different subgroups of your
-#### data.
+#### HAART therapy. Bar charts are useful to show a distribution of data points or 
+#### perform a comparison of metric values across different subgroups of your data.
     
 #### Question 3: What demographics around the world are not benefiting from HAART therapy? 
+
 #### (Pie Chart)
     
     not_benefiting <- merge_hiv_df %>%
@@ -276,7 +283,7 @@ most_accessible <- ggplot(data = receiving) +
       top_n(10)
     name_1 <- c("Middle East and North Africa",  "Gambia", "Honduras", 
                 "Italy", "Myanmar", "Nepal", "Paraguay", "Somalia", "South Sudan")
-    num_1 <- c(8400, 980, 780, 710, 7800, 910, 720, 710, 9900)
+    num_1 <- c(8400, 980,780, 710, 7800, 910, 720, 710, 9900)
     
     demographics_therapy <- pie(num_1, labels = num_1 , main = "Demographics not benefiting from therapy", 
                                 col = rainbow(length(num_1)))
